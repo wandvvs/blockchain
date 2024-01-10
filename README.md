@@ -54,13 +54,13 @@ int main()
 }
 ```
 **Output:**
-``Index: 0
+```
+Index: 0
 Nonce: 9133
 Hash: 00000ee010fe3516efdb3456102216e76ecdb2bd48a11670b1b27ad5ec28fb54
 Previous hash: 
 Data: hello
 Timestamp: 4103741549
-
 
 Index: 1
 Nonce: 3681803
