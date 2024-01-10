@@ -13,7 +13,7 @@ make
 ```
 
 ## TODO on (possible) future:
-- [x] Mining
+- [x] Proof Of Work (Mining)
 - [ ] Serialization
 - [ ] Transactions
 - [ ] More types of mining
