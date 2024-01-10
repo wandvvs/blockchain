@@ -8,11 +8,15 @@
 #include <iostream>
 #include <iomanip>
 #include <chrono>
+#include <vector>
 
+class Blockchain; // FIX: (main file cannot be included recursively when building)
 
 class Block
 {
-public:
+private:
+    friend Blockchain;
+
     std::string m_data;
     std::string m_hash;
     std::string m_prevhash;
@@ -23,11 +27,13 @@ public:
     static uint32_t count;
 
     std::string sha256(std::string& combin_data);
-
+    
+    void mine();
+    
+public:
     Block();
     Block(std::string data);
 
-    void mine(uint32_t difficult);
     void get_data() const;
 };
 

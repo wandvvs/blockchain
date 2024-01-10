@@ -1,4 +1,5 @@
 #include "../includes/block.h"
+#include "../includes/blockchain.h"
 
 uint32_t Block::count = 0;
 
@@ -31,16 +32,16 @@ std::string Block::sha256(std::string& combin_data)
     return ss.str();
 }
 
-void Block::mine(uint32_t difficult)
+void Block::mine()
 {
     std::string combin_data = std::to_string(this->m_index) + this->m_data +
                               this->m_hash + std::to_string(this->m_nonce) +
                               this->m_prevhash;
-    char char_str[difficult + 1];
-    for(uint32_t i = 0; i < difficult; ++i) {
+    char char_str[DIFFICULT + 1];
+    for(uint32_t i = 0; i < DIFFICULT; ++i) {
         char_str[i] = '0';
     }
-    char_str[difficult] = '\0';
+    char_str[DIFFICULT] = '\0';
 
     std::string str(char_str);
 
@@ -52,7 +53,7 @@ void Block::mine(uint32_t difficult)
         this->m_nonce++;
         this->m_hash = sha256(combin_data);
     }
-    while(this->m_hash.substr(0,difficult) != str);
+    while(this->m_hash.substr(0,DIFFICULT) != str);
 }
 
 void Block::get_data() const
