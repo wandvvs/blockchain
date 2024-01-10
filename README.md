@@ -27,9 +27,9 @@ make
 - get_data ( it will print all information about this block )
 
 ## Blockchain object
-** Fields:
+** Fields: **
 - chain ( all blocks which have been added )
 
-** Methods:
+** Methods: **
 - add ( the function adds a specific block object to its chain, but not before calling the mine method on the object, after which it adds )
 - get_blocks_data ( calls the get_data method on all blocks in the chain )
