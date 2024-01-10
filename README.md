@@ -1,4 +1,4 @@
-# Get started with blockchain
+# The simplest blokchain
 
 ## Install OpenSSL
 ```bash
@@ -11,6 +11,17 @@ cmake ..
 make
 ./run
 ```
+
+## TODO on (possible) future:
+- [x] Mining
+- [ ] Transactions
+- [ ] Serialization
+- [ ] More type of encryption
+- [ ] More types of mining
+- [ ] Consensus algorithms
+- [ ] Peer-to-peer network
+- [ ] Merkle trees
+- [ ] Excellent security and code fixes
 
 ## Block object
 **Fields:**
