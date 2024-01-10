@@ -1,4 +1,3 @@
-#include <iostream>
 #include "../includes/block.h"
 #include "../includes/blockchain.h"
 
@@ -8,9 +7,11 @@ int main()
 
     Block first("hello");
     Block second("test");
-    
-    chain.add(first, 4);
-    chain.add(second, 6);
+
+    chain.add(first);
+    chain.add(second);
 
     chain.get_blocks_data();
+    
+    std::cout << chain.is_valid() << std::endl;
 }
