@@ -14,10 +14,10 @@ make
 
 ## TODO on (possible) future:
 - [x] Mining
-- [ ] Transactions
 - [ ] Serialization
-- [ ] More type of encryption
+- [ ] Transactions
 - [ ] More types of mining
+- [ ] More type of encryption
 - [ ] Consensus algorithms
 - [ ] Peer-to-peer network
 - [ ] Merkle trees
