@@ -1,3 +1,0 @@
-/home/wand/Documents/cpp/rlblockchain/build/CMakeFiles/run.dir
-/home/wand/Documents/cpp/rlblockchain/build/CMakeFiles/edit_cache.dir
-/home/wand/Documents/cpp/rlblockchain/build/CMakeFiles/rebuild_cache.dir

@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/run.dir/src/main.cpp.o CMakeFiles/run.dir/src/block.cpp.o CMakeFiles/run.dir/src/blockchain.cpp.o -o run  /usr/lib/libssl.so /usr/lib/libcrypto.so 
