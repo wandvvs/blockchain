@@ -13,7 +13,7 @@ make
 ```
 
 ## Block object
-** Fields:
+** Fields: **
 - data ( contains some string )
 - hash ( hash outstanding after mining given difficulty
 - prevhash ( previous block hash )
@@ -21,7 +21,7 @@ make
 - nonce ( number of attempts to generate a valid hash )
 - timestamp ( date and time when block has been successfully added to chain )
 
-** Methods:
+** Methods: **
 - sha256 ( generate hash based on input data )
 - mine ( start looking for a hash that will have as many zeros at the beginning as we passed it to the parameters )
 - get_data ( it will print all information about this block )
