@@ -25,7 +25,6 @@ make
 
 ## Block object
 **Fields:**
-private:
 - data ( contains some string )
 - hash ( hash outstanding after mining given difficulty
 - prevhash ( previous block hash )
@@ -35,11 +34,9 @@ private:
 - list of transaction
 
 **Methods:**
-private:
 - sha256 ( generate hash based on input data )
 - mine ( starts looking for a hash in which the number of zeros at the beginning is the same as the number of constants DIFFICULT  )
 
-public:
 - get_data ( it will print all information about this block )
 - get_transactions ( it will print all transaction that had been pushed to block )
 - serialize ( translates the fields of a block into a json structure )
@@ -48,7 +45,6 @@ public:
 
 ## Blockchain object
 **Fields:**
-private:
 - chain ( all blocks which have been added )
 
 **Methods:**
@@ -59,13 +55,11 @@ public:
 
 ## Transaction object
 **Fields:**
-private:
 - sender ( string of sender name )
 - receiver ( string of receiver name )
 - amount ( amount of deal )
 
 **Methods:**
-public:
 - serialize ( same essence as the block object )
 - deserialize ( same essence as the block object )
   
