@@ -1,4 +1,4 @@
-# The simplest blokchain
+# Extremely simple blockchain implementation
 
 ### Install OpenSSL
 ```bash
