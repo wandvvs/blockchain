@@ -1,5 +1,5 @@
 # Getting started with blockchain
-Extremely simple blockchain implementation with C++ && OpenSSL && nlohmann::json
+Extremely simple blockchain implementation with C++
 
 ### Install OpenSSL & nlohmann
 ```bash
