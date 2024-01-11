@@ -1,7 +1,7 @@
 # Blockchain
 simple blockchain implementation with c++
 
-# Building
+## Building
 
 ### System Requirements
 There are several system requirements including clang.
