@@ -15,7 +15,7 @@ make
 ./run
 ```
 
-## TODO on (possible) future:
+## TODO in (possible) future:
 - [x] Proof Of Work (Mining)
 - [x] Serialization
 - [x] Transactions
