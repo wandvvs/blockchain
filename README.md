@@ -1,10 +1,10 @@
 # The simplest blokchain
 
-## Install OpenSSL
+### Install OpenSSL
 ```bash
 sudo pacman -S openssl
 ```
-## Compile
+### Compile
 ```bash
 cd build
 cmake ..
@@ -12,7 +12,7 @@ make
 ./run
 ```
 
-## TODO on (possible) future:
+### TODO on (possible) future:
 - [x] Proof Of Work (Mining)
 - [x] Serialization
 - [x] Transactions
@@ -23,7 +23,7 @@ make
 - [ ] Merkle trees
 - [ ] Excellent security and code fixes
 
-## Block object
+### Block object
 **Fields:**
 - data ( contains some string )
 - hash ( hash outstanding after mining given difficulty
@@ -43,7 +43,7 @@ make
 - deserialize ( takes json as argument and fills the block fields with json argument fields )
 - serialize_transactions ( helper function, calls serialize on each transaction object )
 
-## Blockchain object
+### Blockchain object
 **Fields:**
 - chain ( all blocks which have been added )
 
@@ -53,7 +53,7 @@ public:
 - get_blocks_data ( calls the get_data method on all blocks in the chain )
 - is_valid ( goes through the entire blockchain and compares whether the previous hash of the next block is equal to the current hash of the current block )
 
-## Transaction object
+### Transaction object
 **Fields:**
 - sender ( string of sender name )
 - receiver ( string of receiver name )
@@ -63,7 +63,7 @@ public:
 - serialize ( same essence as the block object )
 - deserialize ( same essence as the block object )
   
-## Example
+### Example
 ```cpp
 #include "../includes/block.h"
 #include "../includes/blockchain.h"
