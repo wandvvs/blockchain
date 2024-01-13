@@ -7,12 +7,21 @@ simple blockchain implementation with c++
 There are several system requirements including clang.
 
 #### Arch
+
+Get a secp256k1 for signing algorithms
+```bash
+git clone https://github.com/bitcoin-core/secp256k1.git
+cd secp256k1
+./autogen.sh
+./configure
+make
+```
+Install libraries
 ```bash
 sudo pacman -S openssl
 sudo pacman -S nlohmann-json
 ```
-
-### Running
+Running
 ```bash
 cd build
 cmake ..
