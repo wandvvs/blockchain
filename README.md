@@ -24,8 +24,9 @@ make
 - [x] Proof Of Work (Mining)
 - [x] Serialization
 - [x] Transactions
+- [x] Signing transactions
+- [x] More type of encryption
 - [ ] More types of mining
-- [ ] More type of encryption
 - [ ] Consensus algorithms
 - [ ] Peer-to-peer network
 - [ ] Merkle trees
