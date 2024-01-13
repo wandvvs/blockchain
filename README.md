@@ -123,13 +123,11 @@ int main() {
 
     return 0;
 }
-
 ```
 **Output:**
 ```
 Sender balance: -250.5
 Receiver balance: 250.5
 Miner balance: 100
-
 ```
 
