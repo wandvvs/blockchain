@@ -25,8 +25,8 @@ make
 - [x] Serialization
 - [x] Transactions
 - [x] Signing transactions
-- [x] More type of encryption
-- [ ] More types of mining
+- [x] More type for hashing
+- [ ] More types for mining
 - [ ] Consensus algorithms
 - [ ] Peer-to-peer network
 - [ ] Merkle trees
@@ -50,17 +50,24 @@ make
 - get_transactions ( it will print all transaction that had been pushed to block )
 - serialize ( translates the fields of a block into a json structure )
 - deserialize ( takes json as argument and fills the block fields with json argument fields )
-- serialize_transactions ( helper function, calls serialize on each transaction object )
 
 ## Blockchain object
 **Fields:**
 - chain ( all blocks which have been added )
+- pending_transactions
+- reward of mining
 
 **Methods:**
 public:
 - add ( the function adds a specific block object to its chain, but not before calling the mine method on the object, after which it adds )
 - get_blocks_data ( calls the get_data method on all blocks in the chain )
 - is_valid ( goes through the entire blockchain and compares whether the previous hash of the next block is equal to the current hash of the current block )
+- create_genesis
+- create_transaction
+- get_balance(address)
+- get_last_block
+- get_genesis_block
+- get_height
 
 ## Transaction object
 **Fields:**
@@ -71,53 +78,58 @@ public:
 **Methods:**
 - serialize ( same essence as the block object )
 - deserialize ( same essence as the block object )
-  
+- sign
+- verify sign
+- is_valid
+- signature_len
+- get_hash
+- get_sender
+- get_receiver
+- get_amount
+
 ## Example
 ```cpp
-#include "../includes/block.h"
 #include "../includes/blockchain.h"
-#include "../includes/transaction.h"
 
-int main()
-{
-    Blockchain chain; /* Creating block chain */
+int main() {
+    Blockchain chain;
 
-    Transaction first_trans("Bob", "Alexa", 5416.53); /* Creating some transactions */
-    Transaction second_trans("Tomas", "Robert", 13.2);
+    RSA* sender_private_key = generate_private_key();
+    RSA* sender_public_key = generate_public_key(sender_private_key);
 
-    std::vector<Transaction> transactions {first_trans, second_trans}; /* Transactions vector for BLOCK constructor */
+    RSA* miner_private_key = generate_private_key();
 
-    Block block("data", transactions); /* Create a block for chain */
-    chain.add(block);
-    block.get_data(); /* Get block data */
+    RSA* receiver_private_key = generate_private_key();
+    RSA* receiver_public_key = generate_public_key(receiver_private_key);
 
-    nlohmann::json serialized = block.serialize(); /* Block serialize */
-    std::cout << serialized.dump() << std::endl;
+    Transaction test {"Sender", "Receiver", 250.5};
 
-    Block deserialized; /* Block deserialized */
-    deserialized.deserialize(serialized);
-    deserialized.get_data();
+    test.sign(sender_private_key);
+    
+    if(test.verify(sender_public_key)) {
+        chain.create_transaction(test, sender_private_key);
+        chain.mine_pending_transactions("wand", miner_private_key);
+
+        std::cout << "Sender balance: " << chain.get_balance("Sender") << std::endl;
+        std::cout << "Receiver balance: " << chain.get_balance("Receiver") << std::endl;
+    }
+    else {
+        std::cerr << "Failed to sign transaction" << std::endl;
+    }
+
+    chain.mine_pending_transactions("wand", miner_private_key);
+
+    std::cout << "Miner balance: " << chain.get_balance("wand") << std::endl;
+
+    return 0;
 }
 
 ```
 **Output:**
 ```
-Index: 0
-Nonce: 523
-Hash: 0006c7174fb1c8bf75ed4fcb04672554889da5968e50c59e4492596c26c257d7
-Previous hash: 
-Data: data
-Timestamp: 4193473935
-Transactions count: 2
-
-{"data":"data","hash":"0006c7174fb1c8bf75ed4fcb04672554889da5968e50c59e4492596c26c257d7","index":0,"nonce":523,"previous hash":"","timestamp":4193473935,"transactions":[{"amount":5416.52978515625,"receiver":"Alexa","sender":"Bob"},{"amount":13.199999809265137,"receiver":"Robert","sender":"Tomas"}]}
-Index: 0
-Nonce: 523
-Hash: 0006c7174fb1c8bf75ed4fcb04672554889da5968e50c59e4492596c26c257d7
-Previous hash: 
-Data: data
-Timestamp: 4193473935
-Transactions count: 2
+Sender balance: -250.5
+Receiver balance: 250.5
+Miner balance: 100
 
 ```
 
