@@ -1,24 +1,36 @@
-#include "../includes/block.h"
 #include "../includes/blockchain.h"
-#include "../includes/transaction.h"
+#include <algorithm>
+#include <openssl/x509.h>
 
-int main()
-{
-    Blockchain chain; /* Creating block chain */
+int main() {
+    Blockchain chain;
 
-    Transaction first_trans("Bob", "Alexa", 5416.53); /* Creating some transactions */
-    Transaction second_trans("Tomas", "Robert", 13.2);
+    RSA* sender_private_key = generate_private_key();
+    RSA* sender_public_key = generate_public_key(sender_private_key);
 
-    std::vector<Transaction> transactions {first_trans, second_trans}; /* Transactions vector for BLOCK constructor */
+    RSA* miner_private_key = generate_private_key();
 
-    Block block("data", transactions); /* Create a block for chain */
-    chain.add(block);
-    block.get_data(); /* Get block data */
+    RSA* receiver_private_key = generate_private_key();
+    RSA* receiver_public_key = generate_public_key(receiver_private_key);
 
-    nlohmann::json serialized = block.serialize(); /* Block serialize */
-    std::cout << serialized.dump() << std::endl;
+    Transaction test {"Sender", "Receiver", 250.5};
 
-    Block deserialized; /* Block deserialized */
-    deserialized.deserialize(serialized);
-    deserialized.get_data();
+    test.sign(sender_private_key);
+    
+    if(test.verify(sender_public_key)) {
+        chain.create_transaction(test, sender_private_key);
+        chain.mine_pending_transactions("wand", miner_private_key);
+
+        std::cout << "Sender balance: " << chain.get_balance("Sender") << std::endl;
+        std::cout << "Receiver balance: " << chain.get_balance("Receiver") << std::endl;
+    }
+    else {
+        std::cerr << "Failed to sign transaction" << std::endl;
+    }
+
+    chain.mine_pending_transactions("wand", miner_private_key);
+
+    std::cout << "Miner balance: " << chain.get_balance("wand") << std::endl;
+
+    return 0;
 }

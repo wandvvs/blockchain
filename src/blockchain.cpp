@@ -1,15 +1,57 @@
 #include "../includes/blockchain.h"
+#include <cstdint>
 
-Blockchain::Blockchain() = default;
+Blockchain::Blockchain()
+{
+    this->chain = {this->create_genesis()};
+}
 
 void Blockchain::add(Block& block)
 {
-    if(!chain.empty()) {
-        std::string prev = chain.back().m_hash;
-        block.m_prevhash = prev;
-    }
+    block.m_prevhash = get_last().m_hash;
     block.mine();
     chain.push_back(block);
+}
+
+void Blockchain::mine_pending_transactions(std::string reward_address, RSA* miner_private_key)
+{
+    Block block(pending_transactions);
+    block.mine();
+
+    for(auto& transaction : block.m_transactions) {
+        transaction.sign(miner_private_key);
+    }
+
+    chain.push_back(block);
+
+    pending_transactions.clear();
+
+    create_transaction({"Reward",
+                        reward_address,
+                        reward}, miner_private_key);
+}
+
+void Blockchain::create_transaction(Transaction transaction, RSA* private_key)
+{
+    transaction.sign(private_key);
+    pending_transactions.push_back(transaction);
+}
+
+float Blockchain::get_balance(std::string address) {
+    float balance = 0;
+
+    for (const auto& block : chain) {
+        for (const auto& transaction : block.m_transactions) {
+            if(address == transaction.m_receiver) {
+                balance += transaction.m_amount;
+            }
+            else if(address == transaction.m_sender) {
+                balance -= transaction.m_amount;
+            }
+        }
+    }
+
+    return balance;
 }
 
 void Blockchain::get_blocks_data()
@@ -28,4 +70,31 @@ bool Blockchain::is_valid()
     }
 
     return true;
+}
+
+Block Blockchain::create_genesis()
+{
+    Block block;
+
+    block.m_index = 0;
+    block.m_hash = "Genesis Block";
+    block.m_prevhash = "Genesis Block";
+    block.m_nonce = 0;
+
+    return block;
+}
+
+Block Blockchain::get_genesis()
+{
+    return chain.empty() ? Block() : chain[0];
+}
+
+Block Blockchain::get_last()
+{
+    return chain[get_height() - 1];
+}
+
+size_t Blockchain::get_height()
+{
+    return chain.size();
 }

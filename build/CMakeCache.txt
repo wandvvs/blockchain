@@ -230,6 +230,12 @@ PKG_CONFIG_ARGN:STRING=
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
+//The directory containing a CMake configuration file for SECP256K1.
+SECP256K1_DIR:PATH=SECP256K1_DIR-NOTFOUND
+
+//Path to a library.
+SECP256K1_LIBRARY:FILEPATH=/usr/lib/libsecp256k1.so
+
 //The directory containing a CMake configuration file for nlohmann_json.
 nlohmann_json_DIR:PATH=/usr/share/cmake/nlohmann_json
 
@@ -247,6 +253,9 @@ rlblockchain_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 rlblockchain_SOURCE_DIR:STATIC=/home/wand/Documents/cpp/rlblockchain
+
+//The directory containing a CMake configuration file for secp256k1.
+secp256k1_DIR:PATH=secp256k1_DIR-NOTFOUND
 
 
 ########################

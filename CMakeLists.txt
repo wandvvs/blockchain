@@ -14,6 +14,7 @@ set(INCLUDE_DIRS
 
 find_package(OpenSSL REQUIRED)
 find_package(nlohmann_json 3.2.0 REQUIRED)
+find_library(SECP256K1_LIBRARY NAMES secp256k1)
 
 add_executable(run ${SOURCES})
 
@@ -21,6 +22,7 @@ target_include_directories(run PRIVATE ${INCLUDE_DIRS})
 
 target_link_libraries(run PRIVATE OpenSSL::SSL OpenSSL::Crypto)
 target_link_libraries(run PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(run PRIVATE ${SECP256K1_LIBRARY})
 
 set_target_properties(run PROPERTIES
     CXX_STANDARD 20
