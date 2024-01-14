@@ -4,7 +4,7 @@ Blockchain implementation with C++
 ## Building
 All functionality was tested on Arch Linux successfully
 
-Get a secp256k1 for signing algorithms
+**Get a secp256k1 for signing algorithms**
 ```bash
 git clone https://github.com/bitcoin-core/secp256k1.git
 cd secp256k1
@@ -12,18 +12,18 @@ cd secp256k1
 ./configure
 make
 ```
-Install libraries
+**Install libraries**
 ```bash
 sudo pacman -S openssl
 sudo pacman -S nlohmann-json
 ```
-Local client:
+**Local client**
 ```bash
 cd build
 cmake --build . --target run_client
 ./run_client
 ```
-TCP server:
+**TCP server**
 ```bash
 cd build
 cmake --build . --target run_server
