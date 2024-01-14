@@ -4,11 +4,14 @@
 #include <openssl/rsa.h>
 #include <openssl/pem.h>
 #include <openssl/err.h>
-#include <cstdint>
 #include <nlohmann/json_fwd.hpp>
-#include <string>
 #include <nlohmann/json.hpp>
 #include <secp256k1.h>
+
+#include "../utils/crypto.h"
+
+#include <cstdint>
+#include <string>
 
 class Block;
 class Blockchain;

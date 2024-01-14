@@ -1,8 +1,6 @@
 #include "../includes/block.h"
 #include "../includes/blockchain.h"
-#include <cstdint>
-#include <nlohmann/json_fwd.hpp>
-#include <openssl/sha.h>
+#include "network/settings.h"
 
 uint32_t Block::count = 1;
 
@@ -79,4 +77,17 @@ void Block::get_transactions() const
                   << "\nAmount: "   << transaction.m_amount
                   << "\n\n";
     }
+}
+
+std::string Block::get_combined_data()
+{
+    return std::to_string(m_index) + "\n" + m_hash + "\n" + std::to_string(m_nonce) 
+        + "\n" + m_prevhash + "\n"; 
+}
+
+void Block::tcp_send_block(int client_socket)
+{
+    std::string data = this->get_combined_data();
+
+    send(client_socket, data.c_str(), data.size(), 0);
 }

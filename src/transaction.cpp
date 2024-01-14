@@ -1,10 +1,4 @@
 #include "../includes/transaction.h"
-#include <cstdint>
-#include <nlohmann/json_fwd.hpp>
-#include <openssl/rsa.h>
-#include <openssl/sha.h>
-#include <secp256k1.h>
-#include "../utils/crypto.h"
 
 Transaction::Transaction() = default;
 

@@ -3,9 +3,11 @@
 
 #include "block.h"
 #include "transaction.h"
+
+#include <openssl/x509.h>
+
 #include <cstdint>
 #include <algorithm>
-#include <openssl/x509.h>
 
 const uint32_t DIFFICULT = 3; // Temporarily it will be const, cuz i dont have network and network config now.
 

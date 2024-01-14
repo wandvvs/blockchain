@@ -2,6 +2,7 @@
 #define BLOCK_H
 
 #include "../utils/crypto.h"
+#include "transaction.h"
 
 #define SHA_SHA256(data) sha256(data)
 #define SHA_SHA384(data) sha384(data)
@@ -13,15 +14,12 @@
 #include <nlohmann/json.hpp>
 #include <openssl/sha.h>
 
-#include "transaction.h"
-
 #include <string>
 #include <cstdint>
 #include <iostream>
 #include <iomanip>
 #include <chrono>
 #include <vector>
-
 
 class Blockchain; // FIX: (main file cannot be included recursively when building)
 
@@ -44,12 +42,14 @@ public:
     Block();
     Block(std::vector<Transaction> transactions);
 
+    std::string get_combined_data();
+
     void get_data() const;
     void get_transactions() const;
 
     nlohmann::json serialize();
     void deserialize(const nlohmann::json& json);
+
+    void tcp_send_block(int client_socket);
 };
 #endif
-
-
