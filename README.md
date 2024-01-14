@@ -41,7 +41,6 @@ cmake --build . --target run_server
 - [ ] More types for mining
 - [ ] Consensus algorithms
 - [ ] Merkle trees
-- [ ] Excellent security and code fixes
 
 ## Block object
 **Fields:**
