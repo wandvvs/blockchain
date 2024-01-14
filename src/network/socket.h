@@ -1,7 +1,7 @@
 #pragma once
 #include "settings.h"
 
-inline int createClientSocket() {
+inline int create_client_socket() {
     int client_socket = socket(AF_INET, SOCK_STREAM, 0);
 
     struct sockaddr_in server_addr;
