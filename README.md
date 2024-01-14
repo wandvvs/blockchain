@@ -4,8 +4,6 @@ Blockchain implementation with C++
 ## Building
 All functionality was tested on Arch Linux successfully
 
-#### Arch
-
 Get a secp256k1 for signing algorithms
 ```bash
 git clone https://github.com/bitcoin-core/secp256k1.git
