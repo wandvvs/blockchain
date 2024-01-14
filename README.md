@@ -1,10 +1,8 @@
 # Blockchain
-simple blockchain implementation with c++
+Blockchain implementation with C++
 
 ## Building
-
-### System Requirements
-There are several system requirements including clang.
+All functionality was tested on Arch Linux successfully
 
 #### Arch
 
