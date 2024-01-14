@@ -21,7 +21,6 @@ Install libraries
 sudo pacman -S openssl
 sudo pacman -S nlohmann-json
 ```
-Running
 Local client:
 ```bash
 cd build
