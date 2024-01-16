@@ -9,7 +9,7 @@
 #include <cstdint>
 #include <algorithm>
 
-const uint32_t DIFFICULT = 3; // Temporarily it will be const, cuz i dont have network and network config now.
+const uint32_t DIFFICULT = 3;
 
 class Blockchain
 {
