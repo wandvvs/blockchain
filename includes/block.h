@@ -4,12 +4,6 @@
 #include "../utils/crypto.h"
 #include "transaction.h"
 
-#define SHA_SHA256(data) sha256(data)
-#define SHA_SHA384(data) sha384(data)
-#define SHA_SHA512(data) sha512(data)
-
-#define HASH_FUNC SHA_SHA512        /* select the hashing algorithm from defines above */
-
 #include <nlohmann/json_fwd.hpp>
 #include <nlohmann/json.hpp>
 #include <openssl/sha.h>
@@ -20,8 +14,9 @@
 #include <iomanip>
 #include <chrono>
 #include <vector>
+#include <functional>
 
-class Blockchain; // FIX: (main file cannot be included recursively when building)
+class Blockchain;
 
 class Block
 {
@@ -30,14 +25,17 @@ private:
 
     std::string m_hash;
     std::string m_prevhash;
+    std::function<std::string(std::string)> HASH_FUNC {sha256};
+
+    static uint32_t count;
     uint32_t m_index;
     uint32_t m_timestamp;
+
     int32_t m_nonce;
+
     std::vector<Transaction> m_transactions;
         
-    static uint32_t count; // It is nedeed for store the number of blocks created and to index the created blocks
-    
-    void mine(); // POW (Proof Of Work) implementation. Generates a hash until it is correct. Increasing the nonce.
+    void mine(); 
 public:
     Block();
     Block(std::vector<Transaction> transactions);

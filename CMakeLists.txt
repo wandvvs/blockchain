@@ -22,6 +22,7 @@ set(INCLUDE_DIRS
 find_package(OpenSSL REQUIRED)
 find_package(nlohmann_json 3.2.0 REQUIRED)
 find_library(SECP256K1_LIBRARY NAMES secp256k1)
+find_package(Boost REQUIRED COMPONENTS system)
 
 add_executable(run_client ${CLIENT_SOURCES})
 add_executable(run_server ${SERVER_SOURCES})
@@ -29,6 +30,7 @@ add_executable(run_server ${SERVER_SOURCES})
 target_include_directories(run_client PRIVATE ${INCLUDE_DIRS})
 target_include_directories(run_server PRIVATE ${INCLUDE_DIRS})
 
+target_link_libraries(run_client PRIVATE Boost::system)
 target_link_libraries(run_client PRIVATE OpenSSL::SSL OpenSSL::Crypto)
 target_link_libraries(run_client PRIVATE nlohmann_json::nlohmann_json)
 target_link_libraries(run_client PRIVATE ${SECP256K1_LIBRARY})

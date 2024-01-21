@@ -36,7 +36,8 @@ void Blockchain::create_transaction(Transaction transaction, RSA* private_key)
     pending_transactions.push_back(transaction);
 }
 
-float Blockchain::get_balance(std::string address) {
+float Blockchain::get_balance(std::string address)
+{
     float balance = 0;
 
     for (const auto& block : chain) {

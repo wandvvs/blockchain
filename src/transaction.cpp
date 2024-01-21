@@ -45,8 +45,8 @@ void Transaction::sign(RSA* private_key)
     signature_len = len;
 }
 
-bool Transaction::verify(RSA* public_key) const {
-
+bool Transaction::verify(RSA* public_key) const
+{
     ERR_clear_error();
 
     std::string dataToVerify = m_sender + m_receiver + std::to_string(m_amount);
@@ -66,7 +66,8 @@ bool Transaction::verify(RSA* public_key) const {
     return true;
 }
 
-bool Transaction::is_valid(RSA* publicKey) const {
+bool Transaction::is_valid(RSA* publicKey) const
+{
     if (!(m_amount > 0)) {
         return false;
     }

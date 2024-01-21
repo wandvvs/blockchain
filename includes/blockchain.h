@@ -9,7 +9,7 @@
 #include <cstdint>
 #include <algorithm>
 
-const uint32_t DIFFICULT = 3; // Temporarily it will be const, cuz i dont have network and network config now.
+const uint32_t DIFFICULT = 3;
 
 class Blockchain
 {
@@ -28,13 +28,11 @@ public:
     void mine_pending_transactions(std::string reward_address, RSA* miner_private_key);
     void create_transaction(Transaction transaction, RSA* private_key);
 
-    float get_balance(std::string address);
-
     Block get_genesis();
     Block get_last();
-
+    
+    float get_balance(std::string address);
     bool is_valid();
-
     size_t get_height();
 };
 
