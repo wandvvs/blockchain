@@ -53,7 +53,7 @@ cmake --build . --target run_server
 - list of transaction
 
 **Methods:**
-- sha256 ( generate hash based on input data )
+- pointer to a function from  ../utils/crypto.h (sha256, sha384, sha512) for hashing
 - mine ( starts looking for a hash in which the number of zeros at the beginning is the same as the number of constants DIFFICULT  )
 
 - get_data ( it will print all information about this block )
