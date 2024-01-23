@@ -38,7 +38,7 @@ do {
         this->m_nonce++;
         this->m_hash = HASH_FUNC(combin_data);
     }
-    while(this->m_hash.substr(0,DIFFICULT) != str);
+    while(!this->m_hash.starts_with(char_str));
 }
 
 void Block::get_data() const

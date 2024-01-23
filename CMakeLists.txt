@@ -15,17 +15,17 @@ set(INCLUDE_DIRS
 
 find_package(OpenSSL REQUIRED)
 find_package(nlohmann_json 3.2.0 REQUIRED)
-find_library(SECP256K1_LIBRARY NAMES secp256k1)
 find_package(Boost REQUIRED COMPONENTS system)
 
 add_executable(run_client ${CLIENT_SOURCES})
 
 target_include_directories(run_client PRIVATE ${INCLUDE_DIRS})
 
-target_link_libraries(run_client PRIVATE Boost::system)
-target_link_libraries(run_client PRIVATE OpenSSL::SSL OpenSSL::Crypto)
-target_link_libraries(run_client PRIVATE nlohmann_json::nlohmann_json)
-target_link_libraries(run_client PRIVATE ${SECP256K1_LIBRARY})
+target_link_libraries(run_client PRIVATE
+    Boost::system
+    OpenSSL::SSL OpenSSL::Crypto
+    nlohmann_json::nlohmann_json
+)
 
 set_target_properties(run_client PROPERTIES
     CXX_STANDARD 20
@@ -33,3 +33,4 @@ set_target_properties(run_client PROPERTIES
 )
 
 target_compile_options(run_client PRIVATE -Wno-deprecated-declarations)
+

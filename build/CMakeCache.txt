@@ -254,6 +254,69 @@ boost_system_DIR:PATH=/usr/lib/cmake/boost_system-1.83.0
 nlohmann_json_DIR:PATH=/usr/share/cmake/nlohmann_json
 
 //Path to a library.
+pkgcfg_lib_GTKMM_atk-1.0:FILEPATH=/usr/lib/libatk-1.0.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_atkmm-1.6:FILEPATH=/usr/lib/libatkmm-1.6.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_cairo:FILEPATH=/usr/lib/libcairo.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_cairo-gobject:FILEPATH=/usr/lib/libcairo-gobject.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_cairomm-1.0:FILEPATH=/usr/lib/libcairomm-1.0.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_gdk-3:FILEPATH=/usr/lib/libgdk-3.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_gdk_pixbuf-2.0:FILEPATH=/usr/lib/libgdk_pixbuf-2.0.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_gdkmm-3.0:FILEPATH=/usr/lib/libgdkmm-3.0.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_gio-2.0:FILEPATH=/usr/lib/libgio-2.0.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_giomm-2.4:FILEPATH=/usr/lib/libgiomm-2.4.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_glib-2.0:FILEPATH=/usr/lib/libglib-2.0.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_glibmm-2.4:FILEPATH=/usr/lib/libglibmm-2.4.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_gobject-2.0:FILEPATH=/usr/lib/libgobject-2.0.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_gtk-3:FILEPATH=/usr/lib/libgtk-3.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_gtkmm-3.0:FILEPATH=/usr/lib/libgtkmm-3.0.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_harfbuzz:FILEPATH=/usr/lib/libharfbuzz.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_pango-1.0:FILEPATH=/usr/lib/libpango-1.0.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_pangocairo-1.0:FILEPATH=/usr/lib/libpangocairo-1.0.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_pangomm-1.4:FILEPATH=/usr/lib/libpangomm-1.4.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_sigc-2.0:FILEPATH=/usr/lib/libsigc-2.0.so
+
+//Path to a library.
+pkgcfg_lib_GTKMM_z:FILEPATH=/usr/lib/libz.so
+
+//Path to a library.
 pkgcfg_lib__OPENSSL_crypto:FILEPATH=/usr/lib/libcrypto.so
 
 //Path to a library.
@@ -429,8 +492,45 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/cmake/Boost-1.83.0/BoostConfig.cmake][cfound components: system ][v1.83.0()]
 //Details about finding OpenSSL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/usr/lib/libcrypto.so][/usr/include][c ][v3.2.0()]
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v2.1.0()]
 //Details about finding nlohmann_json
 FIND_PACKAGE_MESSAGE_DETAILS_nlohmann_json:INTERNAL=[/usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake][v3.11.2(3.2.0)]
+GTKMM_CFLAGS:INTERNAL=-I/usr/include/gtkmm-3.0;-I/usr/lib/gtkmm-3.0/include;-I/usr/include/atkmm-1.6;-I/usr/lib/atkmm-1.6/include;-I/usr/include/gtk-3.0/unix-print;-I/usr/include/gdkmm-3.0;-I/usr/lib/gdkmm-3.0/include;-I/usr/include/giomm-2.4;-I/usr/lib/giomm-2.4/include;-I/usr/include/gtk-3.0;-I/usr/include;-I/usr/include/cairo;-I/usr/include/atk-1.0;-I/usr/include/pangomm-1.4;-I/usr/lib/pangomm-1.4/include;-I/usr/include/glibmm-2.4;-I/usr/lib/glibmm-2.4/include;-I/usr/include/cairomm-1.0;-I/usr/lib/cairomm-1.0/include;-I/usr/include/sigc++-2.0;-I/usr/lib/sigc++-2.0/include;-I/usr/include/pango-1.0;-I/usr/include/freetype2;-I/usr/include/harfbuzz;-I/usr/include/gdk-pixbuf-2.0;-I/usr/include/glib-2.0;-I/usr/lib/glib-2.0/include;-I/usr/include/cloudproviders;-I/usr/include/at-spi2-atk/2.0;-I/usr/include/at-spi-2.0;-I/usr/include/dbus-1.0;-I/usr/lib/dbus-1.0/include;-I/usr/include/gio-unix-2.0;-I/usr/include/pixman-1;-I/usr/include/fribidi;-I/usr/include/libpng16;-I/usr/include/libmount;-I/usr/include/blkid;-I/usr/include/sysprof-6;-pthread
+GTKMM_CFLAGS_I:INTERNAL=
+GTKMM_CFLAGS_OTHER:INTERNAL=-pthread
+GTKMM_FOUND:INTERNAL=1
+GTKMM_INCLUDEDIR:INTERNAL=/usr/include
+GTKMM_INCLUDE_DIRS:INTERNAL=/usr/include/gtkmm-3.0;/usr/lib/gtkmm-3.0/include;/usr/include/atkmm-1.6;/usr/lib/atkmm-1.6/include;/usr/include/gtk-3.0/unix-print;/usr/include/gdkmm-3.0;/usr/lib/gdkmm-3.0/include;/usr/include/giomm-2.4;/usr/lib/giomm-2.4/include;/usr/include/gtk-3.0;/usr/include;/usr/include/cairo;/usr/include/atk-1.0;/usr/include/pangomm-1.4;/usr/lib/pangomm-1.4/include;/usr/include/glibmm-2.4;/usr/lib/glibmm-2.4/include;/usr/include/cairomm-1.0;/usr/lib/cairomm-1.0/include;/usr/include/sigc++-2.0;/usr/lib/sigc++-2.0/include;/usr/include/pango-1.0;/usr/include/freetype2;/usr/include/harfbuzz;/usr/include/gdk-pixbuf-2.0;/usr/include/glib-2.0;/usr/lib/glib-2.0/include;/usr/include/cloudproviders;/usr/include/at-spi2-atk/2.0;/usr/include/at-spi-2.0;/usr/include/dbus-1.0;/usr/lib/dbus-1.0/include;/usr/include/gio-unix-2.0;/usr/include/pixman-1;/usr/include/fribidi;/usr/include/libpng16;/usr/include/libmount;/usr/include/blkid;/usr/include/sysprof-6
+GTKMM_LDFLAGS:INTERNAL=-L/usr/lib;-lgtkmm-3.0;-latkmm-1.6;-lgdkmm-3.0;-lgiomm-2.4;-lgtk-3;-lgdk-3;-lz;-latk-1.0;-lcairo-gobject;-lgio-2.0;-lpangomm-1.4;-lglibmm-2.4;-lcairomm-1.0;-lsigc-2.0;-lpangocairo-1.0;-lpango-1.0;-lharfbuzz;-lcairo;-lgdk_pixbuf-2.0;-lgobject-2.0;-lglib-2.0
+GTKMM_LDFLAGS_OTHER:INTERNAL=
+GTKMM_LIBDIR:INTERNAL=/usr/lib
+GTKMM_LIBRARIES:INTERNAL=gtkmm-3.0;atkmm-1.6;gdkmm-3.0;giomm-2.4;gtk-3;gdk-3;z;atk-1.0;cairo-gobject;gio-2.0;pangomm-1.4;glibmm-2.4;cairomm-1.0;sigc-2.0;pangocairo-1.0;pango-1.0;harfbuzz;cairo;gdk_pixbuf-2.0;gobject-2.0;glib-2.0
+GTKMM_LIBRARY_DIRS:INTERNAL=/usr/lib
+GTKMM_LIBS:INTERNAL=
+GTKMM_LIBS_L:INTERNAL=
+GTKMM_LIBS_OTHER:INTERNAL=
+GTKMM_LIBS_PATHS:INTERNAL=
+GTKMM_MODULE_NAME:INTERNAL=gtkmm-3.0
+GTKMM_PREFIX:INTERNAL=/usr
+GTKMM_STATIC_CFLAGS:INTERNAL=-I/usr/include/gtkmm-3.0;-I/usr/lib/gtkmm-3.0/include;-I/usr/include/atkmm-1.6;-I/usr/lib/atkmm-1.6/include;-I/usr/include/gtk-3.0/unix-print;-I/usr/include/gdkmm-3.0;-I/usr/lib/gdkmm-3.0/include;-I/usr/include/giomm-2.4;-I/usr/lib/giomm-2.4/include;-I/usr/include/gtk-3.0;-I/usr/include;-I/usr/include/cairo;-I/usr/include/atk-1.0;-I/usr/include/pangomm-1.4;-I/usr/lib/pangomm-1.4/include;-I/usr/include/glibmm-2.4;-I/usr/lib/glibmm-2.4/include;-I/usr/include/cairomm-1.0;-I/usr/lib/cairomm-1.0/include;-I/usr/include/sigc++-2.0;-I/usr/lib/sigc++-2.0/include;-I/usr/include/pango-1.0;-I/usr/include/freetype2;-I/usr/include/harfbuzz;-I/usr/include/gdk-pixbuf-2.0;-I/usr/include/glib-2.0;-I/usr/lib/glib-2.0/include;-I/usr/include/cloudproviders;-I/usr/include/at-spi2-atk/2.0;-I/usr/include/at-spi-2.0;-I/usr/include/dbus-1.0;-I/usr/lib/dbus-1.0/include;-I/usr/include/gio-unix-2.0;-I/usr/include/pixman-1;-I/usr/include/fribidi;-I/usr/include/libpng16;-I/usr/include/libmount;-I/usr/include/blkid;-I/usr/include/sysprof-6;-pthread;-DLZMA_API_STATIC
+GTKMM_STATIC_CFLAGS_I:INTERNAL=
+GTKMM_STATIC_CFLAGS_OTHER:INTERNAL=-pthread;-DLZMA_API_STATIC
+GTKMM_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/gtkmm-3.0;/usr/lib/gtkmm-3.0/include;/usr/include/atkmm-1.6;/usr/lib/atkmm-1.6/include;/usr/include/gtk-3.0/unix-print;/usr/include/gdkmm-3.0;/usr/lib/gdkmm-3.0/include;/usr/include/giomm-2.4;/usr/lib/giomm-2.4/include;/usr/include/gtk-3.0;/usr/include;/usr/include/cairo;/usr/include/atk-1.0;/usr/include/pangomm-1.4;/usr/lib/pangomm-1.4/include;/usr/include/glibmm-2.4;/usr/lib/glibmm-2.4/include;/usr/include/cairomm-1.0;/usr/lib/cairomm-1.0/include;/usr/include/sigc++-2.0;/usr/lib/sigc++-2.0/include;/usr/include/pango-1.0;/usr/include/freetype2;/usr/include/harfbuzz;/usr/include/gdk-pixbuf-2.0;/usr/include/glib-2.0;/usr/lib/glib-2.0/include;/usr/include/cloudproviders;/usr/include/at-spi2-atk/2.0;/usr/include/at-spi-2.0;/usr/include/dbus-1.0;/usr/lib/dbus-1.0/include;/usr/include/gio-unix-2.0;/usr/include/pixman-1;/usr/include/fribidi;/usr/include/libpng16;/usr/include/libmount;/usr/include/blkid;/usr/include/sysprof-6
+GTKMM_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lgtkmm-3.0;-latkmm-1.6;-lgdkmm-3.0;-lgiomm-2.4;-lgtk-3;-lgdk-3;-lz;-lcairo-gobject;-lm;-ldl;-lm;-pthread;-lrt;-lpangomm-1.4;-lglibmm-2.4;-lcairomm-1.0;-lsigc-2.0;-lpangocairo-1.0;-lm;-lm;-lm;-ldl;-lpthread;-pthread;-lfreetype;-lbz2;-lm;-lgdk_pixbuf-2.0;-lm;-pthread;-lglib-2.0;-lm;-pthread;-L/usr/lib;-lXrandr;-lXcursor;-lXcomposite;-lXdamage;-lXinerama;-lcloudproviders;-latk-bridge-2.0;-latspi;-lXtst;-lXi;-lXfixes;-latk-1.0;-ldbus-1;-lsystemd;-Wl,--export-dynamic;-lxkbcommon;-lwayland-cursor;-lwayland-egl;-lwayland-client;-lm;-pthread;-lrt;-lepoxy;-ldl;-lGL;-lEGL;-lpangoft2-1.0;-lm;-lpango-1.0;-lm;-lcairo;-lm;-ldl;-lXext;-lxcb-render;-lxcb-shm;-lpixman-1;-lm;-pthread;-lfribidi;-lthai;-ldatrie;-lXft;-lXrender;-lX11;-lpthread;-lxcb;-lXau;-lXdmcp;-lfontconfig;-pthread;-lexpat;-lm;-lharfbuzz-gobject;-lfreetype;-lbz2;-lharfbuzz;-pthread;-lm;-lbrotlidec;-lbrotlicommon;-lgraphite2;-lpng16;-lm;-lz;-lm;-ltiff;-ljbig;-lm;-lzstd;-llzma;-lpthread;-ljpeg;-lgio-2.0;-lgobject-2.0;-lffi;-lgmodule-2.0;-pthread;-lglib-2.0;-lm;-lpcre2-8;-lz;-lmount;-lblkid;-lsysprof-capture-4;-pthread
+GTKMM_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread;-pthread;-pthread;-pthread;-Wl,--export-dynamic;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread
+GTKMM_STATIC_LIBDIR:INTERNAL=
+GTKMM_STATIC_LIBRARIES:INTERNAL=gtkmm-3.0;atkmm-1.6;gdkmm-3.0;giomm-2.4;gtk-3;gdk-3;z;cairo-gobject;m;dl;m;rt;pangomm-1.4;glibmm-2.4;cairomm-1.0;sigc-2.0;pangocairo-1.0;m;m;m;dl;pthread;freetype;bz2;m;gdk_pixbuf-2.0;m;glib-2.0;m;Xrandr;Xcursor;Xcomposite;Xdamage;Xinerama;cloudproviders;atk-bridge-2.0;atspi;Xtst;Xi;Xfixes;atk-1.0;dbus-1;systemd;xkbcommon;wayland-cursor;wayland-egl;wayland-client;m;rt;epoxy;dl;GL;EGL;pangoft2-1.0;m;pango-1.0;m;cairo;m;dl;Xext;xcb-render;xcb-shm;pixman-1;m;fribidi;thai;datrie;Xft;Xrender;X11;pthread;xcb;Xau;Xdmcp;fontconfig;expat;m;harfbuzz-gobject;freetype;bz2;harfbuzz;m;brotlidec;brotlicommon;graphite2;png16;m;z;m;tiff;jbig;m;zstd;lzma;pthread;jpeg;gio-2.0;gobject-2.0;ffi;gmodule-2.0;glib-2.0;m;pcre2-8;z;mount;blkid;sysprof-capture-4
+GTKMM_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib;/usr/lib
+GTKMM_STATIC_LIBS:INTERNAL=
+GTKMM_STATIC_LIBS_L:INTERNAL=
+GTKMM_STATIC_LIBS_OTHER:INTERNAL=
+GTKMM_STATIC_LIBS_PATHS:INTERNAL=
+GTKMM_VERSION:INTERNAL=3.24.8
+GTKMM_gtkmm-3.0_INCLUDEDIR:INTERNAL=
+GTKMM_gtkmm-3.0_LIBDIR:INTERNAL=
+GTKMM_gtkmm-3.0_PREFIX:INTERNAL=
+GTKMM_gtkmm-3.0_VERSION:INTERNAL=
 //ADVANCED property for variable: OPENSSL_CRYPTO_LIBRARY
 OPENSSL_CRYPTO_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENSSL_INCLUDE_DIR
@@ -478,12 +578,56 @@ _OPENSSL_openssl_INCLUDEDIR:INTERNAL=
 _OPENSSL_openssl_LIBDIR:INTERNAL=
 _OPENSSL_openssl_PREFIX:INTERNAL=
 _OPENSSL_openssl_VERSION:INTERNAL=
+__pkg_config_arguments_GTKMM:INTERNAL=REQUIRED;gtkmm-3.0
 __pkg_config_arguments__OPENSSL:INTERNAL=QUIET;openssl
+__pkg_config_checked_GTKMM:INTERNAL=1
 __pkg_config_checked__OPENSSL:INTERNAL=1
 //ADVANCED property for variable: boost_headers_DIR
 boost_headers_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: boost_system_DIR
 boost_system_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_atk-1.0
+pkgcfg_lib_GTKMM_atk-1.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_atkmm-1.6
+pkgcfg_lib_GTKMM_atkmm-1.6-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_cairo
+pkgcfg_lib_GTKMM_cairo-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_cairo-gobject
+pkgcfg_lib_GTKMM_cairo-gobject-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_cairomm-1.0
+pkgcfg_lib_GTKMM_cairomm-1.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_gdk-3
+pkgcfg_lib_GTKMM_gdk-3-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_gdk_pixbuf-2.0
+pkgcfg_lib_GTKMM_gdk_pixbuf-2.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_gdkmm-3.0
+pkgcfg_lib_GTKMM_gdkmm-3.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_gio-2.0
+pkgcfg_lib_GTKMM_gio-2.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_giomm-2.4
+pkgcfg_lib_GTKMM_giomm-2.4-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_glib-2.0
+pkgcfg_lib_GTKMM_glib-2.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_glibmm-2.4
+pkgcfg_lib_GTKMM_glibmm-2.4-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_gobject-2.0
+pkgcfg_lib_GTKMM_gobject-2.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_gtk-3
+pkgcfg_lib_GTKMM_gtk-3-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_gtkmm-3.0
+pkgcfg_lib_GTKMM_gtkmm-3.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_harfbuzz
+pkgcfg_lib_GTKMM_harfbuzz-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_pango-1.0
+pkgcfg_lib_GTKMM_pango-1.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_pangocairo-1.0
+pkgcfg_lib_GTKMM_pangocairo-1.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_pangomm-1.4
+pkgcfg_lib_GTKMM_pangomm-1.4-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_sigc-2.0
+pkgcfg_lib_GTKMM_sigc-2.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GTKMM_z
+pkgcfg_lib_GTKMM_z-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_crypto
 pkgcfg_lib__OPENSSL_crypto-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_ssl
