@@ -14,7 +14,7 @@ make
 ./run_client
 ```
 
-## TODO in (possible) future:
+## Was done:
 - [x] Proof Of Work (Mining)
 - [x] Serialization
 - [x] Transactions
