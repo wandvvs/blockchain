@@ -1,7 +1,7 @@
 # Blockchain
 Blockchain implementation with C++, all test were performed on Arch Linux.
 
-**Dependencies:**
+## **Dependencies:**
 ```bash
 sudo pacman -S openssl
 sudo pacman -S nlohmann-json
