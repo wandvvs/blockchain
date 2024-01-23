@@ -1,18 +1,7 @@
 # Blockchain
-Blockchain implementation with C++
+Blockchain implementation with C++, all test were performed on Arch Linux.
 
-## Building
-All functionality was tested on Arch Linux successfully
-
-**Get a secp256k1 for signing algorithms**
-```bash
-git clone https://github.com/bitcoin-core/secp256k1.git
-cd secp256k1
-./autogen.s
-./configure
-make
-```
-**Install libraries**
+**Dependencies:**
 ```bash
 sudo pacman -S openssl
 sudo pacman -S nlohmann-json
