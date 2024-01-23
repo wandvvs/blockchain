@@ -47,9 +47,9 @@ cmake --build . --target run_client
 **Methods:**
 - pointer to a function from  ../utils/crypto.h (sha256, sha384, sha512) for hashing
 - mine ( starts looking for a hash in which the number of zeros at the beginning is the same as the number of constants DIFFICULT  )
-
 - get_data ( it will print all information about this block )
 - get_transactions ( it will print all transaction that had been pushed to block )
+- get_merkle_root
 - serialize ( translates the fields of a block into a json structure )
 - deserialize ( takes json as argument and fills the block fields with json argument fields )
 
@@ -88,6 +88,15 @@ public:
 - get_sender
 - get_receiver
 - get_amount
+
+## Merkle Tree Object
+**Fields:**
+- string vector ( merkle tree )
+
+**Methods:**
+- get_tree_root
+- is_empty
+- build_tree
 
 ## Transaction signing example:
 ```cpp
