@@ -1,46 +1,28 @@
 # Blockchain
-Blockchain implementation with C++
+Blockchain implementation with C++, all test were performed on Arch Linux.
 
-## Building
-All functionality was tested on Arch Linux successfully
-
-**Get a secp256k1 for signing algorithms**
-```bash
-git clone https://github.com/bitcoin-core/secp256k1.git
-cd secp256k1
-./autogen.s
-./configure
-make
-```
-**Install libraries**
+## **Dependencies:**
 ```bash
 sudo pacman -S openssl
 sudo pacman -S nlohmann-json
 ```
-**Local client**
+## **Build:**
 ```bash
 cd build
-cmake --build . --target run_client
+cmake ..
+make
 ./run_client
 ```
-**TCP server**
-```bash
-cd build
-cmake --build . --target run_server
-./run_server
-```
 
-## TODO in (possible) future:
+## Was done:
 - [x] Proof Of Work (Mining)
 - [x] Serialization
 - [x] Transactions
 - [x] Signing transactions
 - [x] More type for hashing
-- [x] TCP server
+- [x] Merkle trees
 - [ ] Peer-to-peer network 
-- [ ] More types for mining
 - [ ] Consensus algorithms
-- [ ] Merkle trees
 
 ## Block object
 **Fields:**
@@ -55,9 +37,9 @@ cmake --build . --target run_server
 **Methods:**
 - pointer to a function from  ../utils/crypto.h (sha256, sha384, sha512) for hashing
 - mine ( starts looking for a hash in which the number of zeros at the beginning is the same as the number of constants DIFFICULT  )
-
 - get_data ( it will print all information about this block )
 - get_transactions ( it will print all transaction that had been pushed to block )
+- get_merkle_root
 - serialize ( translates the fields of a block into a json structure )
 - deserialize ( takes json as argument and fills the block fields with json argument fields )
 
@@ -72,7 +54,6 @@ public:
 - add ( the function adds a specific block object to its chain, but not before calling the mine method on the object, after which it adds )
 - get_blocks_data ( calls the get_data method on all blocks in the chain )
 - is_valid ( goes through the entire blockchain and compares whether the previous hash of the next block is equal to the current hash of the current block )
-- tcp_send_block(client socket) ( sends block data to the TCP server, which will receive it )
 - create_genesis
 - create_transaction
 - get_balance(address)
@@ -98,10 +79,14 @@ public:
 - get_receiver
 - get_amount
 
-## TCP Server
-The most common TCP server, written using sockets, receives data that is sent to it and outputs it.
-Located in the src/network/server.cpp folder, uses the settings located in src/network/settings.h.
-Helper function located in the src/network/socket.h create_client_socket() сreates client.
+## Merkle Tree Object
+**Fields:**
+- string vector ( merkle tree )
+
+**Methods:**
+- get_tree_root
+- is_empty
+- build_tree
 
 ## Transaction signing example:
 ```cpp
@@ -137,6 +122,8 @@ int main() {
 
     std::cout << "Miner balance: " << chain.get_balance("wand") << std::endl;
 
+    chain.get_blocks_data();
+
     return 0;
 }
 ```
@@ -145,33 +132,28 @@ int main() {
 Sender balance: -250.5
 Receiver balance: 250.5
 Miner balance: 100
-```
-### TCP send block to the server example:
-```bash
-./run_server
-```
-```cpp
-#include "../includes/blockchain.h"
-#include "network/socket.h"
 
-int main() {
-    int client_socket = create_client_socket();
+Index: 0
+Nonce: 0
+Hash: Genesis Block
+Previous hash: Genesis Block
+Timestamp: 1408
+Transactions count: 0
+Merkle root hash: 
 
-    Blockchain chain;
-    Block block;
+Index: 1
+Nonce: 234022
+Hash: 00000ff4017eaf4d642fc3758c0cf168042d7605698dc114086a5b584560b48169efa9559a2b310d3da63e2aadda46b36ac6579877174e060140c3a85a3d7f80
+Previous hash: Genesis Block
+Timestamp: 914349399
+Transactions count: 1
+Merkle root hash: ce0356d39a072e660598e59bca7c511d2ca852b15c6e1ca4c0955e2f52382273
 
-    chain.add(block);
-
-    block.tcp_send_block(client_socket);
-}
-```
-**Output:**
-Server:
-```
-Server listening on port 8082
-Received data from client:
-1600677166
-0008c89eea5248197ea803a7e443c527439307c783841b141ebfe2bff9629fdf95bab4f5a33f5fe636cc82f4335ed40ce4cf9af7c93f3bfa1d60000b6444ee97
-2129043265
-Genesis Block
+Index: 2
+Nonce: 1145474
+Hash: 00000fcfa299a09b9e0dd2d551dd3a3d9dc493de6404266770a79fdd34a74b27262276be052a57daa3087ba9037570348c15ed8a1740aa6789cf9066ca645207
+Previous hash: 00000ff4017eaf4d642fc3758c0cf168042d7605698dc114086a5b584560b48169efa9559a2b310d3da63e2aadda46b36ac6579877174e060140c3a85a3d7f80
+Timestamp: 914353405
+Transactions count: 1
+Merkle root hash: 6f5430c287309c1ac847de0885835e7d5d32c1eff9f77084978896a6e538fc6a
 ```
