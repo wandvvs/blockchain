@@ -3,6 +3,7 @@
 
 #include "../utils/crypto.h"
 #include "transaction.h"
+#include "merkle_tree.h"
 
 #include <nlohmann/json_fwd.hpp>
 #include <nlohmann/json.hpp>
@@ -25,16 +26,18 @@ private:
 
     std::vector<Transaction> m_transactions;
     void mine();
-
+    
+    std::string merkle_root_transaction;
     std::string m_hash;
     std::string m_prevhash;
-    std::function<std::string(std::string)> HASH_FUNC {sha256};
+    std::function<std::string(std::string)> HASH_FUNC {sha512};
 
     static uint32_t count;
     uint32_t        m_index;
     uint32_t        m_timestamp;
     int32_t         m_nonce;
 
+    void set_merkle_root(std::string root) {merkle_root_transaction = root;} 
 public:
     Block();
     Block(std::vector<Transaction> transactions);
@@ -47,7 +50,7 @@ public:
     nlohmann::json serialize();
     void deserialize(const nlohmann::json& json);
 
-    void tcp_send_block(int client_socket) const;
+    std::string get_merkle_root() const { return merkle_root_transaction; }
 };
 
 #endif

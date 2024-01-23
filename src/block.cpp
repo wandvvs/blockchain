@@ -1,10 +1,12 @@
 #include "../includes/block.h"
 #include "../includes/blockchain.h"
-#include "network/settings.h"
 
 uint32_t Block::count = 1;
 
-Block::Block() = default;
+Block::Block()
+{
+
+}
 
 Block::Block(std::vector<Transaction> transactions) : m_transactions(transactions)
 {
@@ -41,7 +43,7 @@ do {
 
 void Block::get_data() const
 {
-    std::cout << "Index: " << m_index << "\nNonce: " << m_nonce << "\nHash: " << m_hash << "\nPrevious hash: " << m_prevhash << "\nTimestamp: " << m_timestamp << "\nTransactions count: " << m_transactions.size() << "\n\n";
+    std::cout << "Index: " << m_index << "\nNonce: " << m_nonce << "\nHash: " << m_hash << "\nPrevious hash: " << m_prevhash << "\nTimestamp: " << m_timestamp << "\nTransactions count: " << m_transactions.size() << "\nMerkle root hash: " << merkle_root_transaction << "\n\n";
 }
 
 nlohmann::json Block::serialize()
@@ -83,11 +85,4 @@ std::string Block::get_combined_data() const
 {
     return std::to_string(m_index) + "\n" + m_hash + "\n" + std::to_string(m_nonce) 
         + "\n" + m_prevhash + "\n"; 
-}
-
-void Block::tcp_send_block(int client_socket) const
-{
-    std::string data = this->get_combined_data();
-
-    send(client_socket, data.c_str(), data.size(), 0);
 }

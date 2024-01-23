@@ -129,26 +129,12 @@ run_client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/build
 .PHONY : run_client/fast
 
-#=============================================================================
-# Target rules for targets named run_server
-
-# Build rule for target.
-run_server: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 run_server
-.PHONY : run_server
-
-# fast build rule for target.
-run_server/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/build
-.PHONY : run_server/fast
-
 src/block.o: src/block.cpp.o
 .PHONY : src/block.o
 
 # target to build an object file
 src/block.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/block.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/block.cpp.o
 .PHONY : src/block.cpp.o
 
 src/block.i: src/block.cpp.i
@@ -157,7 +143,6 @@ src/block.i: src/block.cpp.i
 # target to preprocess a source file
 src/block.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/block.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/block.cpp.i
 .PHONY : src/block.cpp.i
 
 src/block.s: src/block.cpp.s
@@ -166,7 +151,6 @@ src/block.s: src/block.cpp.s
 # target to generate assembly for a file
 src/block.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/block.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/block.cpp.s
 .PHONY : src/block.cpp.s
 
 src/blockchain.o: src/blockchain.cpp.o
@@ -175,7 +159,6 @@ src/blockchain.o: src/blockchain.cpp.o
 # target to build an object file
 src/blockchain.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/blockchain.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/blockchain.cpp.o
 .PHONY : src/blockchain.cpp.o
 
 src/blockchain.i: src/blockchain.cpp.i
@@ -184,7 +167,6 @@ src/blockchain.i: src/blockchain.cpp.i
 # target to preprocess a source file
 src/blockchain.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/blockchain.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/blockchain.cpp.i
 .PHONY : src/blockchain.cpp.i
 
 src/blockchain.s: src/blockchain.cpp.s
@@ -193,7 +175,6 @@ src/blockchain.s: src/blockchain.cpp.s
 # target to generate assembly for a file
 src/blockchain.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/blockchain.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/blockchain.cpp.s
 .PHONY : src/blockchain.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -220,29 +201,29 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/network/server.o: src/network/server.cpp.o
-.PHONY : src/network/server.o
+src/merkle_tree.o: src/merkle_tree.cpp.o
+.PHONY : src/merkle_tree.o
 
 # target to build an object file
-src/network/server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/network/server.cpp.o
-.PHONY : src/network/server.cpp.o
+src/merkle_tree.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/merkle_tree.cpp.o
+.PHONY : src/merkle_tree.cpp.o
 
-src/network/server.i: src/network/server.cpp.i
-.PHONY : src/network/server.i
+src/merkle_tree.i: src/merkle_tree.cpp.i
+.PHONY : src/merkle_tree.i
 
 # target to preprocess a source file
-src/network/server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/network/server.cpp.i
-.PHONY : src/network/server.cpp.i
+src/merkle_tree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/merkle_tree.cpp.i
+.PHONY : src/merkle_tree.cpp.i
 
-src/network/server.s: src/network/server.cpp.s
-.PHONY : src/network/server.s
+src/merkle_tree.s: src/merkle_tree.cpp.s
+.PHONY : src/merkle_tree.s
 
 # target to generate assembly for a file
-src/network/server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/network/server.cpp.s
-.PHONY : src/network/server.cpp.s
+src/merkle_tree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/merkle_tree.cpp.s
+.PHONY : src/merkle_tree.cpp.s
 
 src/transaction.o: src/transaction.cpp.o
 .PHONY : src/transaction.o
@@ -250,7 +231,6 @@ src/transaction.o: src/transaction.cpp.o
 # target to build an object file
 src/transaction.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/transaction.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/transaction.cpp.o
 .PHONY : src/transaction.cpp.o
 
 src/transaction.i: src/transaction.cpp.i
@@ -259,7 +239,6 @@ src/transaction.i: src/transaction.cpp.i
 # target to preprocess a source file
 src/transaction.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/transaction.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/transaction.cpp.i
 .PHONY : src/transaction.cpp.i
 
 src/transaction.s: src/transaction.cpp.s
@@ -268,7 +247,6 @@ src/transaction.s: src/transaction.cpp.s
 # target to generate assembly for a file
 src/transaction.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/transaction.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_server.dir/build.make CMakeFiles/run_server.dir/src/transaction.cpp.s
 .PHONY : src/transaction.cpp.s
 
 # Help Target
@@ -280,7 +258,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... run_client"
-	@echo "... run_server"
 	@echo "... src/block.o"
 	@echo "... src/block.i"
 	@echo "... src/block.s"
@@ -290,9 +267,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/network/server.o"
-	@echo "... src/network/server.i"
-	@echo "... src/network/server.s"
+	@echo "... src/merkle_tree.o"
+	@echo "... src/merkle_tree.i"
+	@echo "... src/merkle_tree.s"
 	@echo "... src/transaction.o"
 	@echo "... src/transaction.i"
 	@echo "... src/transaction.s"

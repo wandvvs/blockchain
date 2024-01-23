@@ -35,13 +35,13 @@ public:
     void deserialize(const nlohmann::json& json);
 
     void sign(RSA* private_key);
-    bool verify(RSA* public_key) const;
+    bool verify(RSA* public_key)   const;
     bool is_valid(RSA* public_key) const;
 
     uint32_t signature_len;
 
     std::string get_hash();
-
+    std::string get_all_data() const  { return m_sender + m_receiver + std::to_string(m_amount); }
     std::string get_sender() const { return m_sender; }
     std::string get_receiver() const { return m_receiver; }
     float       get_amount() const { return m_amount; }
