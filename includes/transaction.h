@@ -24,9 +24,9 @@ private:
 
     std::string m_sender;
     std::string m_receiver;
-    float m_amount;
-
     std::string m_signature;
+    float       m_amount;
+
 public:
     Transaction();
     Transaction(std::string sender, std::string receiver, float amount);
@@ -44,7 +44,7 @@ public:
 
     std::string get_sender() const { return m_sender; }
     std::string get_receiver() const { return m_receiver; }
-    float get_amount() const { return m_amount; }
+    float       get_amount() const { return m_amount; }
 };
 
 #endif

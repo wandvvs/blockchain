@@ -79,13 +79,13 @@ void Block::get_transactions() const
     }
 }
 
-std::string Block::get_combined_data()
+std::string Block::get_combined_data() const
 {
     return std::to_string(m_index) + "\n" + m_hash + "\n" + std::to_string(m_nonce) 
         + "\n" + m_prevhash + "\n"; 
 }
 
-void Block::tcp_send_block(int client_socket)
+void Block::tcp_send_block(int client_socket) const
 {
     std::string data = this->get_combined_data();
 

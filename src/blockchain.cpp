@@ -54,14 +54,14 @@ float Blockchain::get_balance(std::string address)
     return balance;
 }
 
-void Blockchain::get_blocks_data()
+void Blockchain::get_blocks_data() const
 {
     for(const auto& block : chain) {
         block.get_data();
     }
 }
 
-bool Blockchain::is_valid()
+bool Blockchain::is_valid() const
 {
     for(int i = 0; i < chain.size(); ++i) {
         if(chain[0].m_hash != chain[1].m_prevhash) {
@@ -89,12 +89,12 @@ Block Blockchain::get_genesis()
     return chain.empty() ? Block() : chain[0];
 }
 
-Block Blockchain::get_last()
+Block Blockchain::get_last() const
 {
     return chain[get_height() - 1];
 }
 
-size_t Blockchain::get_height()
+size_t Blockchain::get_height() const
 {
     return chain.size();
 }
