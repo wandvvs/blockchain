@@ -6,13 +6,7 @@ set(CLIENT_SOURCES
     src/block.cpp
     src/blockchain.cpp
     src/transaction.cpp
-)
-
-set(SERVER_SOURCES
-    src/network/server.cpp
-    src/block.cpp
-    src/blockchain.cpp
-    src/transaction.cpp
+    src/merkle_tree.cpp
 )
 
 set(INCLUDE_DIRS
@@ -25,27 +19,17 @@ find_library(SECP256K1_LIBRARY NAMES secp256k1)
 find_package(Boost REQUIRED COMPONENTS system)
 
 add_executable(run_client ${CLIENT_SOURCES})
-add_executable(run_server ${SERVER_SOURCES})
 
 target_include_directories(run_client PRIVATE ${INCLUDE_DIRS})
-target_include_directories(run_server PRIVATE ${INCLUDE_DIRS})
 
 target_link_libraries(run_client PRIVATE Boost::system)
 target_link_libraries(run_client PRIVATE OpenSSL::SSL OpenSSL::Crypto)
 target_link_libraries(run_client PRIVATE nlohmann_json::nlohmann_json)
 target_link_libraries(run_client PRIVATE ${SECP256K1_LIBRARY})
 
-target_link_libraries(run_server PRIVATE OpenSSL::SSL OpenSSL::Crypto)
-target_link_libraries(run_server PRIVATE nlohmann_json::nlohmann_json)
-target_link_libraries(run_server PRIVATE ${SECP256K1_LIBRARY})
-
 set_target_properties(run_client PROPERTIES
     CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
 )
 
-set_target_properties(run_server PROPERTIES
-    CXX_STANDARD 20
-    CXX_STANDARD_REQUIRED ON
-)
-
+target_compile_options(run_client PRIVATE -Wno-deprecated-declarations)

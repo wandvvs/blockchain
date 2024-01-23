@@ -1,6 +1,7 @@
 #ifndef CRYPTO_H
 #define CRYPTO_H
 
+
 #include <iostream>
 #include <openssl/rsa.h>
 #include <openssl/sha.h>
@@ -15,12 +16,16 @@
 
 inline std::string sha256(std::string combin_data)
 {
+    EVP_MD_CTX *mdctx;
+    const EVP_MD *md;
     uint8_t hash[SHA256_DIGEST_LENGTH];
 
-    SHA256_CTX context;
-    SHA256_Init(&context);
-    SHA256_Update(&context, combin_data.c_str(), combin_data.length());
-    SHA256_Final(hash, &context);
+    md = EVP_sha256();
+    mdctx = EVP_MD_CTX_new();
+    EVP_DigestInit_ex(mdctx, md, NULL);
+    EVP_DigestUpdate(mdctx, combin_data.c_str(), combin_data.length());
+    EVP_DigestFinal_ex(mdctx, hash, NULL);
+    EVP_MD_CTX_free(mdctx);
 
     std::stringstream ss;
     for(int i = 0; i < SHA256_DIGEST_LENGTH; ++i) {
@@ -32,12 +37,16 @@ inline std::string sha256(std::string combin_data)
 
 inline std::string sha384(std::string combin_data)
 {
+    EVP_MD_CTX *mdctx;
+    const EVP_MD *md;
     uint8_t hash[SHA384_DIGEST_LENGTH];
-    
-    SHA512_CTX context;
-    SHA384_Init(&context);
-    SHA384_Update(&context, combin_data.c_str(), combin_data.length());
-    SHA384_Final(hash, &context);
+
+    md = EVP_sha384();
+    mdctx = EVP_MD_CTX_new();
+    EVP_DigestInit_ex(mdctx, md, NULL);
+    EVP_DigestUpdate(mdctx, combin_data.c_str(), combin_data.length());
+    EVP_DigestFinal_ex(mdctx, hash, NULL);
+    EVP_MD_CTX_free(mdctx);
 
     std::stringstream ss;
     for(int i = 0; i < SHA384_DIGEST_LENGTH; ++i) {
@@ -49,20 +58,27 @@ inline std::string sha384(std::string combin_data)
 
 inline std::string sha512(std::string combin_data)
 {
+    EVP_MD_CTX *mdctx;
+    const EVP_MD *md;
     uint8_t hash[SHA512_DIGEST_LENGTH];
 
-    SHA512_CTX context;
-    SHA512_Init(&context);
-    SHA512_Update(&context, combin_data.c_str(), combin_data.length());
-    SHA512_Final(hash, &context);
+    md = EVP_sha512();
+    mdctx = EVP_MD_CTX_new();
+    EVP_DigestInit_ex(mdctx, md, NULL);
+    EVP_DigestUpdate(mdctx, combin_data.c_str(), combin_data.length());
+    EVP_DigestFinal_ex(mdctx, hash, NULL);
+    EVP_MD_CTX_free(mdctx);
 
     std::stringstream ss;
     for(int i = 0; i < SHA512_DIGEST_LENGTH; ++i) {
         ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
     }
-    
+
     return ss.str();
 }
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 inline RSA* generate_private_key() {
     RSA* private_key = RSA_new();
@@ -86,5 +102,7 @@ inline RSA* generate_public_key(RSA* private_key) {
 
     return public_key;
 }
+
+#pragma clang diagnostic pop
 
 #endif
