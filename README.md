@@ -6,7 +6,7 @@ Blockchain implementation with C++, all test were performed on Arch Linux.
 sudo pacman -S openssl
 sudo pacman -S nlohmann-json
 ```
-
+## **Build:**
 ```bash
 cd build
 cmake ..
