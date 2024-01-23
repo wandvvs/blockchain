@@ -20,7 +20,8 @@ sudo pacman -S nlohmann-json
 
 ```bash
 cd build
-cmake --build . --target run_client
+cmake ..
+make
 ./run_client
 ```
 
