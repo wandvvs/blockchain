@@ -1,5 +1,5 @@
 # Blockchain
-Blockchain implementation with C++, all test were performed on Arch Linux.
+Blockchain implementation with C++20, all test were performed on Arch Linux.
 
 ## **Dependencies:**
 ```bash
