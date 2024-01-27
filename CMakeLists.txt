@@ -33,4 +33,3 @@ set_target_properties(run_client PROPERTIES
 )
 
 target_compile_options(run_client PRIVATE -Wno-deprecated-declarations)
-

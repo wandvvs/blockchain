@@ -29,7 +29,7 @@ void Blockchain::mine_pending_transactions(std::string reward_address, RSA* mine
     for(auto& transaction : block.m_transactions) {
         transaction.sign(miner_private_key);
     }
-    block.merkle_root_transaction = merkle_tree.get_tree_root();
+    block.m_merkle_root_transaction = merkle_tree.get_tree_root();
     block.m_prevhash = get_last().m_hash;
 
     chain.push_back(block);

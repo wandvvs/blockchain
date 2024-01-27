@@ -23,7 +23,7 @@ void Transaction::deserialize(const nlohmann::json& json)
 
 std::string Transaction::get_hash()
 {
-    return sha256(this->m_sender + this->m_receiver + std::to_string(m_amount));
+    return sha256(std::format("{}{}{}", m_sender, m_receiver, m_amount));
 }
 
 void Transaction::sign(RSA* private_key)

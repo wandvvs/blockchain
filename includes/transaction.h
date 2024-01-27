@@ -12,6 +12,7 @@
 
 #include <cstdint>
 #include <string>
+#include <format>
 
 class Block;
 class Blockchain;

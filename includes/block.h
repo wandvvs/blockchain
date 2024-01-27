@@ -16,6 +16,7 @@
 #include <chrono>
 #include <vector>
 #include <functional>
+#include <format>
 
 class Blockchain;
 
@@ -27,7 +28,7 @@ private:
     std::vector<Transaction> m_transactions;
     void mine();
     
-    std::string merkle_root_transaction;
+    std::string m_merkle_root_transaction;
     std::string m_hash;
     std::string m_prevhash;
     std::function<std::string(std::string)> HASH_FUNC {sha512};
@@ -37,7 +38,7 @@ private:
     uint32_t        m_timestamp;
     int32_t         m_nonce;
 
-    void set_merkle_root(std::string root) {merkle_root_transaction = root;} 
+    void set_merkle_root(std::string root) {m_merkle_root_transaction = root;} 
 public:
     Block();
     Block(std::vector<Transaction> transactions);
@@ -50,7 +51,7 @@ public:
     nlohmann::json serialize();
     void deserialize(const nlohmann::json& json);
 
-    std::string get_merkle_root() const { return merkle_root_transaction; }
+    std::string get_merkle_root() const { return m_merkle_root_transaction; }
 };
 
 #endif
