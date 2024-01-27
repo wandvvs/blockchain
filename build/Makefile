@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named run_client
+# Target rules for targets named run
 
 # Build rule for target.
-run_client: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 run_client
-.PHONY : run_client
+run: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 run
+.PHONY : run
 
 # fast build rule for target.
-run_client/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/build
-.PHONY : run_client/fast
+run/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
+.PHONY : run/fast
 
 src/block.o: src/block.cpp.o
 .PHONY : src/block.o
 
 # target to build an object file
 src/block.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/block.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/block.cpp.o
 .PHONY : src/block.cpp.o
 
 src/block.i: src/block.cpp.i
@@ -142,7 +142,7 @@ src/block.i: src/block.cpp.i
 
 # target to preprocess a source file
 src/block.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/block.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/block.cpp.i
 .PHONY : src/block.cpp.i
 
 src/block.s: src/block.cpp.s
@@ -150,7 +150,7 @@ src/block.s: src/block.cpp.s
 
 # target to generate assembly for a file
 src/block.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/block.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/block.cpp.s
 .PHONY : src/block.cpp.s
 
 src/blockchain.o: src/blockchain.cpp.o
@@ -158,7 +158,7 @@ src/blockchain.o: src/blockchain.cpp.o
 
 # target to build an object file
 src/blockchain.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/blockchain.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/blockchain.cpp.o
 .PHONY : src/blockchain.cpp.o
 
 src/blockchain.i: src/blockchain.cpp.i
@@ -166,7 +166,7 @@ src/blockchain.i: src/blockchain.cpp.i
 
 # target to preprocess a source file
 src/blockchain.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/blockchain.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/blockchain.cpp.i
 .PHONY : src/blockchain.cpp.i
 
 src/blockchain.s: src/blockchain.cpp.s
@@ -174,7 +174,7 @@ src/blockchain.s: src/blockchain.cpp.s
 
 # target to generate assembly for a file
 src/blockchain.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/blockchain.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/blockchain.cpp.s
 .PHONY : src/blockchain.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -182,7 +182,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -190,7 +190,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -198,7 +198,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/merkle_tree.o: src/merkle_tree.cpp.o
@@ -206,7 +206,7 @@ src/merkle_tree.o: src/merkle_tree.cpp.o
 
 # target to build an object file
 src/merkle_tree.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/merkle_tree.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/merkle_tree.cpp.o
 .PHONY : src/merkle_tree.cpp.o
 
 src/merkle_tree.i: src/merkle_tree.cpp.i
@@ -214,7 +214,7 @@ src/merkle_tree.i: src/merkle_tree.cpp.i
 
 # target to preprocess a source file
 src/merkle_tree.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/merkle_tree.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/merkle_tree.cpp.i
 .PHONY : src/merkle_tree.cpp.i
 
 src/merkle_tree.s: src/merkle_tree.cpp.s
@@ -222,7 +222,7 @@ src/merkle_tree.s: src/merkle_tree.cpp.s
 
 # target to generate assembly for a file
 src/merkle_tree.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/merkle_tree.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/merkle_tree.cpp.s
 .PHONY : src/merkle_tree.cpp.s
 
 src/transaction.o: src/transaction.cpp.o
@@ -230,7 +230,7 @@ src/transaction.o: src/transaction.cpp.o
 
 # target to build an object file
 src/transaction.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/transaction.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/transaction.cpp.o
 .PHONY : src/transaction.cpp.o
 
 src/transaction.i: src/transaction.cpp.i
@@ -238,7 +238,7 @@ src/transaction.i: src/transaction.cpp.i
 
 # target to preprocess a source file
 src/transaction.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/transaction.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/transaction.cpp.i
 .PHONY : src/transaction.cpp.i
 
 src/transaction.s: src/transaction.cpp.s
@@ -246,7 +246,7 @@ src/transaction.s: src/transaction.cpp.s
 
 # target to generate assembly for a file
 src/transaction.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_client.dir/build.make CMakeFiles/run_client.dir/src/transaction.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/transaction.cpp.s
 .PHONY : src/transaction.cpp.s
 
 # Help Target
@@ -257,7 +257,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... run_client"
+	@echo "... run"
 	@echo "... src/block.o"
 	@echo "... src/block.i"
 	@echo "... src/block.s"
