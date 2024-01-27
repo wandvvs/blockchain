@@ -21,8 +21,8 @@ make
 - [x] Signing transactions
 - [x] More type for hashing
 - [x] Merkle trees
-- [ ] Peer-to-peer network 
-- [ ] Consensus algorithms
+- [ ] P2P
+- [ ] Consensus
 
 ## Block object
 **Fields:**
