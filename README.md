@@ -11,7 +11,7 @@ sudo pacman -S nlohmann-json
 cd build
 cmake ..
 make
-./run_client
+./run
 ```
 
 ## Was done:
