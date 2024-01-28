@@ -31,7 +31,7 @@ private:
     std::string m_merkle_root_transaction;
     std::string m_hash;
     std::string m_prevhash;
-    std::function<std::string(std::string)> HASH_FUNC {sha512};
+    std::function<std::string(std::string)> HASH_FUNC {crypto::sha::sha256};
 
     static uint32_t count;
     uint32_t        m_index;
