@@ -2,6 +2,7 @@
 #define MERKLE_TREE_H
 
 #include "../utils/crypto.h"
+#include <vector>
 
 class MerkleTree
 {
