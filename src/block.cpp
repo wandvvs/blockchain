@@ -18,14 +18,8 @@ Block::Block(std::vector<Transaction> transactions) : m_transactions(transaction
 void Block::mine()
 {
     std::string combin_data = std::format("{}{}{}{}{}", m_index, m_hash, m_nonce, m_prevhash, m_timestamp);
+    std::string leading_zeroes(DIFFICULT, '0');
 
-    char char_str[DIFFICULT + 1];
-    for(uint32_t i = 0; i < DIFFICULT; ++i) {
-        char_str[i] = '0';
-    }
-    char_str[DIFFICULT] = '\0';
-
-    std::string str(char_str);
     do
     {
         combin_data = std::format("{}{}{}{}{}", m_index, m_hash, m_nonce, m_prevhash, m_timestamp);
@@ -33,7 +27,7 @@ void Block::mine()
         this->m_nonce++;
         this->m_hash = HASH_FUNC(combin_data);
     }
-    while(!this->m_hash.starts_with(char_str));
+    while(!this->m_hash.starts_with(leading_zeroes));
 }
 
 void Block::get_data() const
@@ -49,7 +43,7 @@ nlohmann::json Block::serialize()
 
     blockJson["index"] = m_index;
     blockJson["hash"] = m_hash;
-    blockJson["previous hash"] = m_prevhash;
+    blockJson["previous_hash"] = m_prevhash;
     blockJson["nonce"] = m_nonce;
     blockJson["timestamp"] = m_timestamp;
 
@@ -61,7 +55,7 @@ void Block::deserialize(const nlohmann::json& json)
 {
     m_index = json.value("index", 0);
     m_hash = json.value("hash", "");
-    m_prevhash = json.value("previous hash", "");
+    m_prevhash = json.value("previous_hash", "");
     m_nonce = json.value("nonce", 0);
     m_timestamp = json.value("timestamp", 0);
     
@@ -69,7 +63,8 @@ void Block::deserialize(const nlohmann::json& json)
 
 void Block::get_transactions() const
 {
-    for(const auto& transaction : m_transactions) {
+    for(const auto& transaction : m_transactions)
+    {
         std::cout << std::format("Sender: {}\nReceiver: {}\nAmount: {}", transaction.m_sender, transaction.m_receiver, transaction.m_amount) << "\n\n";
     }
 }

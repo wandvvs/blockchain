@@ -1,26 +1,27 @@
 #include "../includes/merkle_tree.h"
 #include <cstddef>
-#include <vector>
 
 void MerkleTree::build_tree(const std::vector<std::string>& hashes)
 {
     merkle_tree.clear();
     merkle_tree = hashes;
 
+    const size_t leaf_count = 2;
+
     while(merkle_tree.size() > 1)
     {
-        if (merkle_tree.size() % 2 != 0)
+        if (merkle_tree.size() % leaf_count != 0)
         {
             merkle_tree.push_back(merkle_tree.back());
         }
 
         std::vector<std::string> res;
 
-        for(ptrdiff_t i = 0; i < merkle_tree.size(); i += 2)
+        for(size_t i = 0; i < merkle_tree.size(); i += 2)
         {
-            std::string one_leaf = sha256(merkle_tree[i]);
-            std::string second_leaf = sha256(merkle_tree[i+1]);
-            std::string hash = sha256(one_leaf + second_leaf);
+            std::string one_leaf = crypto::sha::sha256(merkle_tree[i]);
+            std::string second_leaf = crypto::sha::sha256(merkle_tree[i+1]);
+            std::string hash = crypto::sha::sha256(one_leaf + second_leaf);
 
             res.push_back(hash);
         }
@@ -35,6 +36,5 @@ MerkleTree::MerkleTree(const std::vector<std::string>& hashes)
 
 const std::string MerkleTree::get_tree_root() const
 {
-    return merkle_tree[0];
+    return merkle_tree.at(0);
 }
-

@@ -1,9 +1,7 @@
 #include "../includes/blockchain.h"
+#include <algorithm>
 
-Blockchain::Blockchain()
-{
-    this->chain = {this->create_genesis()};
-}
+Blockchain::Blockchain() { this->chain = {this->create_genesis()}; }
 
 void Blockchain::add(Block& block)
 {
@@ -15,20 +13,22 @@ void Blockchain::add(Block& block)
 void Blockchain::mine_pending_transactions(std::string reward_address, RSA* miner_private_key)
 {
     std::vector<std::string> transactions_hash;
-    for(const auto& elem : pending_transactions)
-    {
-        std::string hashed = sha256(elem.get_all_data());
-        transactions_hash.push_back(hashed);
-    }
+
+    std::transform(pending_transactions.begin(), pending_transactions.end(), std::back_inserter(transactions_hash),
+        [](const auto& elem)
+        {
+            return crypto::sha::sha256(elem.get_all_data());
+        });
 
     MerkleTree merkle_tree(transactions_hash);
     
     Block block(pending_transactions);
     block.mine();
 
-    for(auto& transaction : block.m_transactions) {
+    std::for_each(block.m_transactions.begin(), block.m_transactions.end(), [miner_private_key](auto& transaction){
         transaction.sign(miner_private_key);
-    }
+    });
+
     block.m_merkle_root_transaction = merkle_tree.get_tree_root();
     block.m_prevhash = get_last().m_hash;
 
@@ -51,36 +51,27 @@ float Blockchain::get_balance(std::string address)
 {
     float balance = 0;
 
-    for (const auto& block : chain) {
-        for (const auto& transaction : block.m_transactions) {
-            if(address == transaction.m_receiver) {
-                balance += transaction.m_amount;
-            }
-            else if(address == transaction.m_sender) {
-                balance -= transaction.m_amount;
-            }
-        }
-    }
+    std::for_each(chain.begin(), chain.end(), [address, &balance](const auto& block)
+    {
+        std::for_each(block.m_transactions.begin(), block.m_transactions.end(), [address, &balance](const auto& transaction)
+        {
+             balance += (address == transaction.m_receiver) ? transaction.m_amount : ((address == transaction.m_sender) ? -transaction.m_amount : 0);
+        });
+    });
 
     return balance;
 }
 
 void Blockchain::get_blocks_data() const
 {
-    for(const auto& block : chain) {
-        block.get_data();
-    }
+    std::for_each(chain.begin(), chain.end(), [](const Block& block) { block.get_data(); });
 }
 
-bool Blockchain::is_valid() const
-{
-    for(int i = 0; i < chain.size(); ++i) {
-        if(chain[0].m_hash != chain[1].m_prevhash) {
-            return false;
-        }
-    }
-
-    return true;
+bool Blockchain::is_valid() const {
+    return std::adjacent_find(chain.begin() + 1, chain.end(),
+        [](const auto& current, const auto& previous) {
+            return current.m_prevhash == previous.m_hash;
+        }) == chain.end();
 }
 
 Block Blockchain::create_genesis()
@@ -95,17 +86,7 @@ Block Blockchain::create_genesis()
     return block;
 }
 
-Block Blockchain::get_genesis()
-{
-    return chain.empty() ? Block() : chain[0];
-}
+Block Blockchain::get_genesis()    { return chain.empty() ? Block() : chain[0]; }
+Block Blockchain::get_last() const { return chain[get_height() - 1]; }
 
-Block Blockchain::get_last() const
-{
-    return chain[get_height() - 1];
-}
-
-size_t Blockchain::get_height() const
-{
-    return chain.size();
-}
+size_t Blockchain::get_height() const { return chain.size() - 1; }

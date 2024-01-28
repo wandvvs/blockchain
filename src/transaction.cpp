@@ -23,7 +23,7 @@ void Transaction::deserialize(const nlohmann::json& json)
 
 std::string Transaction::get_hash()
 {
-    return sha256(std::format("{}{}{}", m_sender, m_receiver, m_amount));
+    return crypto::sha::sha256(std::format("{}{}{}", m_sender, m_receiver, m_amount));
 }
 
 void Transaction::sign(RSA* private_key)
@@ -36,7 +36,8 @@ void Transaction::sign(RSA* private_key)
     uint8_t sign[RSA_size(private_key)];
     uint32_t len;
 
-    if (RSA_sign(NID_sha256, hash, SHA256_DIGEST_LENGTH, sign, &len, private_key) != 1) {
+    if (RSA_sign(NID_sha256, hash, SHA256_DIGEST_LENGTH, sign, &len, private_key) != 1)
+    {
         std::cout << "Signing failed.\n";
         return;
     }
@@ -55,9 +56,10 @@ bool Transaction::verify(RSA* public_key) const
 
 
     int ret = RSA_verify(NID_sha256, hash, SHA256_DIGEST_LENGTH,
-                     reinterpret_cast<const unsigned char*>(m_signature.data()), signature_len, public_key);
+                         reinterpret_cast<const unsigned char*>(m_signature.data()), signature_len, public_key);
 
-    if (ret != 1) {
+    if (ret != 1)
+    {
         unsigned long err = ERR_get_error();
         char *errStr = ERR_error_string(err, NULL);
         std::cout << "Error occurred during verification: " << errStr << std::endl;
@@ -68,9 +70,5 @@ bool Transaction::verify(RSA* public_key) const
 
 bool Transaction::is_valid(RSA* publicKey) const
 {
-    if (!(m_amount > 0)) {
-        return false;
-    }
-
-    return verify(publicKey);
+    return !(m_amount > 0) ? false : verify(publicKey);
 }
