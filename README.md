@@ -1,6 +1,16 @@
 # Blockchain
 Blockchain implementation with C++20, all test were performed on Arch Linux.
 
+## Was done:
+- [x] Proof Of Work (Mining)
+- [x] Serialization
+- [x] Transactions
+- [x] Signing transactions
+- [x] More type for hashing
+- [x] Merkle trees
+- [ ] P2P
+- [ ] Consensus
+
 ## **Dependencies:**
 ```bash
 sudo pacman -S openssl
@@ -11,18 +21,8 @@ sudo pacman -S nlohmann-json
 cd build
 cmake ..
 make
-./run_client
+./run
 ```
-
-## Was done:
-- [x] Proof Of Work (Mining)
-- [x] Serialization
-- [x] Transactions
-- [x] Signing transactions
-- [x] More type for hashing
-- [x] Merkle trees
-- [ ] P2P
-- [ ] Consensus
 
 ## Block object
 **Fields:**
