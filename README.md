@@ -1,5 +1,5 @@
 # Blockchain
-Blockchain implementation with C++20, all test were performed on Arch Linux.
+Blockchain implementation with C++20 and STL, all test were performed on Arch Linux.
 
 ## Was done:
 - [x] Proof Of Work (Mining)
