@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: MIT
+/*
+ * Header file of merkle tree class
+ *
+ * Copyright (C) 2024 wandvvs
+*/
 #ifndef MERKLE_TREE_H
 #define MERKLE_TREE_H
 

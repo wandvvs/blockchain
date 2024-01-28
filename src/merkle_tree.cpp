@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: MIT
+/*
+ * Implementation file for merkle tree class
+ *
+ * Copyright (C) 2024 wandvvs
+*/
 #include "../includes/merkle_tree.h"
 #include <cstddef>
 

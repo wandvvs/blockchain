@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: MIT
+/*
+ * File with cryptographic functions
+ *
+ * Copyright (C) 2024 wandvvs
+*/
 #ifndef CRYPTO_H
 #define CRYPTO_H
 

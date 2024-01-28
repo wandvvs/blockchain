@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: MIT
+/*
+ * Implementation file for transaction class
+ *
+ * Copyright (C) 2024 wandvvs
+*/
 #include "../includes/transaction.h"
 
 Transaction::Transaction() = default;

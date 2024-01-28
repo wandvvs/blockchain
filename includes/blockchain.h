@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: MIT
+/*
+ * Header file of blockchain class
+ *
+ * Copyright (C) 2024 wandvvs
+*/
 #ifndef BLOCKCHAIN_H
 #define BLOCKCHAIN_H
 

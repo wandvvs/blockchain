@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: MIT
+/*
+ * Implementation file for blockchain class
+ *
+ * Copyright (C) 2024 wandvvs
+*/
 #include "../includes/blockchain.h"
 #include <algorithm>
 

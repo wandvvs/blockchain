@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: MIT
+/*
+ * Implementation file for block class
+ *
+ * Copyright (C) 2024 wandvvs
+*/
 #include "../includes/block.h"
 #include "../includes/blockchain.h"
 

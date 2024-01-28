@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: MIT
+/*
+ * Header file of block class
+ *
+ * Copyright (C) 2024 wandvvs
+*/
 #ifndef BLOCK_H
 #define BLOCK_H
 

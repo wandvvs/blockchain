@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: MIT
+/*
+ * Header file of transaction class
+ *
+ * Copyright (C) 2024 wandvvs
+*/
 #ifndef TRANSACTION_H
 #define TRANSACTION_H
 
