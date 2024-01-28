@@ -7,7 +7,7 @@
 #include <cstdint>
 #include <algorithm>
 
-const uint32_t DIFFICULT = 5;
+constexpr uint32_t DIFFICULT = 3;
 
 class Blockchain
 {
