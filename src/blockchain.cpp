@@ -30,9 +30,11 @@ void Blockchain::mine_pending_transactions(std::string reward_address, RSA* mine
     });
 
     block.m_merkle_root_transaction = merkle_tree.get_tree_root();
+
     block.m_prevhash = get_last().m_hash;
 
     chain.push_back(block);
+
 
     pending_transactions.clear();
 
@@ -87,6 +89,6 @@ Block Blockchain::create_genesis()
 }
 
 Block Blockchain::get_genesis()    { return chain.empty() ? Block() : chain[0]; }
-Block Blockchain::get_last() const { return chain[get_height() - 1]; }
+Block Blockchain::get_last() const { return chain[get_height()]; }
 
 size_t Blockchain::get_height() const { return chain.size() - 1; }
