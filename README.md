@@ -92,29 +92,34 @@ public:
 ```cpp
 #include "../includes/blockchain.h"
 
-int main() {
+// using namespace crypto::rsa;
+
+int main()
+{
     Blockchain chain;
 
-    RSA* sender_private_key = generate_private_key();
-    RSA* sender_public_key = generate_public_key(sender_private_key);
+    RSA* miner_private_key = crypto::rsa::generate_private_key();
 
-    RSA* miner_private_key = generate_private_key();
+    RSA* sender_private_key = crypto::rsa::generate_private_key();
+    RSA* sender_public_key = crypto::rsa::generate_public_key(sender_private_key);
 
-    RSA* receiver_private_key = generate_private_key();
-    RSA* receiver_public_key = generate_public_key(receiver_private_key);
+    RSA* receiver_private_key = crypto::rsa::generate_private_key();
+    RSA* receiver_public_key = crypto::rsa::generate_public_key(receiver_private_key);
 
     Transaction test {"Sender", "Receiver", 250.5};
 
     test.sign(sender_private_key);
     
-    if(test.verify(sender_public_key)) {
+    if(test.verify(sender_public_key))
+    {
         chain.create_transaction(test, sender_private_key);
         chain.mine_pending_transactions("wand", miner_private_key);
 
         std::cout << "Sender balance: " << chain.get_balance("Sender") << std::endl;
         std::cout << "Receiver balance: " << chain.get_balance("Receiver") << std::endl;
     }
-    else {
+    else
+    {
         std::cerr << "Failed to sign transaction" << std::endl;
     }
 
@@ -124,6 +129,8 @@ int main() {
 
     chain.get_blocks_data();
 
+    std::cout << (chain.is_valid() ? "Chain are valid" : "Chain aren`t valid") << std::endl;
+
     return 0;
 }
 ```
@@ -132,7 +139,6 @@ int main() {
 Sender balance: -250.5
 Receiver balance: 250.5
 Miner balance: 100
-
 Index: 0
 Nonce: 0
 Hash: Genesis Block
@@ -142,18 +148,20 @@ Transactions count: 0
 Merkle root hash: 
 
 Index: 1
-Nonce: 234022
-Hash: 00000ff4017eaf4d642fc3758c0cf168042d7605698dc114086a5b584560b48169efa9559a2b310d3da63e2aadda46b36ac6579877174e060140c3a85a3d7f80
+Nonce: 852
+Hash: 000a90e11be60a607bd75cbb0f4ce049493565edec85ec17896b80f1cd1be104
 Previous hash: Genesis Block
-Timestamp: 914349399
+Timestamp: 1346666548
 Transactions count: 1
 Merkle root hash: ce0356d39a072e660598e59bca7c511d2ca852b15c6e1ca4c0955e2f52382273
 
 Index: 2
-Nonce: 1145474
-Hash: 00000fcfa299a09b9e0dd2d551dd3a3d9dc493de6404266770a79fdd34a74b27262276be052a57daa3087ba9037570348c15ed8a1740aa6789cf9066ca645207
-Previous hash: 00000ff4017eaf4d642fc3758c0cf168042d7605698dc114086a5b584560b48169efa9559a2b310d3da63e2aadda46b36ac6579877174e060140c3a85a3d7f80
-Timestamp: 914353405
+Nonce: 1640
+Hash: 000d5f867849eeea0f4a8f175c13f2d95c26f134d0d4d43fff275feb3df009b8
+Previous hash: 000a90e11be60a607bd75cbb0f4ce049493565edec85ec17896b80f1cd1be104
+Timestamp: 1346666556
 Transactions count: 1
 Merkle root hash: 6f5430c287309c1ac847de0885835e7d5d32c1eff9f77084978896a6e538fc6a
+
+Chain are valid
 ```
