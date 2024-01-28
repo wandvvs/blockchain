@@ -1,12 +1,10 @@
 #ifndef CRYPTO_H
 #define CRYPTO_H
 
-
 #include <iostream>
 #include <openssl/rsa.h>
 #include <openssl/sha.h>
 #include <iomanip>
-#include <vector>
 #include <secp256k1.h>
 #include <openssl/ec.h>
 #include <openssl/obj_mac.h>
@@ -14,95 +12,107 @@
 #include <openssl/ecdsa.h>
 #include <openssl/pem.h>
 
-inline std::string sha256(std::string combin_data)
+namespace crypto
 {
-    EVP_MD_CTX *mdctx;
-    const EVP_MD *md;
-    uint8_t hash[SHA256_DIGEST_LENGTH];
+    namespace rsa
+    {
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Wdeprecated-declarations" // xd
 
-    md = EVP_sha256();
-    mdctx = EVP_MD_CTX_new();
-    EVP_DigestInit_ex(mdctx, md, NULL);
-    EVP_DigestUpdate(mdctx, combin_data.c_str(), combin_data.length());
-    EVP_DigestFinal_ex(mdctx, hash, NULL);
-    EVP_MD_CTX_free(mdctx);
+        inline RSA* generate_private_key() {
+            RSA* private_key = RSA_new();
+            BIGNUM* bne = BN_new();
+            unsigned long e = RSA_F4;
 
-    std::stringstream ss;
-    for(int i = 0; i < SHA256_DIGEST_LENGTH; ++i) {
-        ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
-    }
+            if (BN_set_word(bne, e) != 1 || RSA_generate_key_ex(private_key, 2048, bne, nullptr) != 1)
+            {
+                throw "Failed to generate private key";
+            }
 
-    return ss.str();
-}
+            BN_free(bne);
+            return private_key;
+        }
 
-inline std::string sha384(std::string combin_data)
-{
-    EVP_MD_CTX *mdctx;
-    const EVP_MD *md;
-    uint8_t hash[SHA384_DIGEST_LENGTH];
+        inline RSA* generate_public_key(RSA* private_key) {
+            RSA* public_key = RSAPublicKey_dup(private_key);
 
-    md = EVP_sha384();
-    mdctx = EVP_MD_CTX_new();
-    EVP_DigestInit_ex(mdctx, md, NULL);
-    EVP_DigestUpdate(mdctx, combin_data.c_str(), combin_data.length());
-    EVP_DigestFinal_ex(mdctx, hash, NULL);
-    EVP_MD_CTX_free(mdctx);
+            if (public_key == nullptr)
+            {
+                throw "Failed to generate public key.";
+            }
 
-    std::stringstream ss;
-    for(int i = 0; i < SHA384_DIGEST_LENGTH; ++i) {
-        ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
-    }
+            return public_key;
+        }
 
-    return ss.str();
-}
+        #pragma clang diagnostic pop
+    };
 
-inline std::string sha512(std::string combin_data)
-{
-    EVP_MD_CTX *mdctx;
-    const EVP_MD *md;
-    uint8_t hash[SHA512_DIGEST_LENGTH];
+    namespace sha
+    {
+        inline std::string sha256(std::string combin_data)
+        {
+            EVP_MD_CTX *mdctx;
+            const EVP_MD *md;
+            uint8_t hash[SHA256_DIGEST_LENGTH];
 
-    md = EVP_sha512();
-    mdctx = EVP_MD_CTX_new();
-    EVP_DigestInit_ex(mdctx, md, NULL);
-    EVP_DigestUpdate(mdctx, combin_data.c_str(), combin_data.length());
-    EVP_DigestFinal_ex(mdctx, hash, NULL);
-    EVP_MD_CTX_free(mdctx);
+            md = EVP_sha256();
+            mdctx = EVP_MD_CTX_new();
+            EVP_DigestInit_ex(mdctx, md, nullptr);
+            EVP_DigestUpdate(mdctx, combin_data.c_str(), combin_data.length());
+            EVP_DigestFinal_ex(mdctx, hash, nullptr);
+            EVP_MD_CTX_free(mdctx);
 
-    std::stringstream ss;
-    for(int i = 0; i < SHA512_DIGEST_LENGTH; ++i) {
-        ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
-    }
+            std::stringstream ss;
+            for(size_t i = 0; i < SHA256_DIGEST_LENGTH; ++i)
+            {
+                ss << std::hex << std::setw(2) << std::setfill('0') << (size_t)hash[i];
+            }
+            return ss.str();
+        }
 
-    return ss.str();
-}
+        inline std::string sha384(std::string combin_data)
+        {
+            EVP_MD_CTX *mdctx;
+            const EVP_MD *md;
+            uint8_t hash[SHA384_DIGEST_LENGTH];
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            md = EVP_sha384();
+            mdctx = EVP_MD_CTX_new();
+            EVP_DigestInit_ex(mdctx, md, nullptr);
+            EVP_DigestUpdate(mdctx, combin_data.c_str(), combin_data.length());
+            EVP_DigestFinal_ex(mdctx, hash, nullptr);
+            EVP_MD_CTX_free(mdctx);
 
-inline RSA* generate_private_key() {
-    RSA* private_key = RSA_new();
-    BIGNUM* bne = BN_new();
-    unsigned long e = RSA_F4;
+            std::stringstream ss;
+            for(size_t i = 0; i < SHA384_DIGEST_LENGTH; ++i)
+            {
+                ss << std::hex << std::setw(2) << std::setfill('0') << (size_t)hash[i];
+            }
+            return ss.str();
+        }
 
-    if (BN_set_word(bne, e) != 1 || RSA_generate_key_ex(private_key, 2048, bne, NULL) != 1) {
-        std::cerr << "Erorr: failed to generate private key" << std::endl;
-    }
+        inline std::string sha512(std::string combin_data)
+        {
+            EVP_MD_CTX *mdctx;
+            const EVP_MD *md;
+            uint8_t hash[SHA512_DIGEST_LENGTH];
 
-    BN_free(bne);
-    return private_key;
-}
+            md = EVP_sha512();
+            mdctx = EVP_MD_CTX_new();
+            EVP_DigestInit_ex(mdctx, md, nullptr);
+            EVP_DigestUpdate(mdctx, combin_data.c_str(), combin_data.length());
+            EVP_DigestFinal_ex(mdctx, hash, nullptr);
+            EVP_MD_CTX_free(mdctx);
 
-inline RSA* generate_public_key(RSA* private_key) {
-    RSA* public_key = RSAPublicKey_dup(private_key);
+            std::stringstream ss;
+            for(size_t i = 0; i < SHA512_DIGEST_LENGTH; ++i)
+            {
+                ss << std::hex << std::setw(2) << std::setfill('0') << (size_t)hash[i];
+            }
 
-    if (public_key == NULL) {
-        std::cerr << "Error: failed to generate public key" << std::endl;
-    }
-
-    return public_key;
-}
-
-#pragma clang diagnostic pop
+            return ss.str();
+        }
+    };
+};
 
 #endif
