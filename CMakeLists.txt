@@ -15,14 +15,12 @@ set(INCLUDE_DIRS
 
 find_package(OpenSSL REQUIRED)
 find_package(nlohmann_json 3.2.0 REQUIRED)
-find_package(Boost REQUIRED COMPONENTS system)
 
 add_executable(run ${CLIENT_SOURCES})
 
 target_include_directories(run PRIVATE ${INCLUDE_DIRS})
 
 target_link_libraries(run PRIVATE
-    Boost::system
     OpenSSL::SSL OpenSSL::Crypto
     nlohmann_json::nlohmann_json
 )

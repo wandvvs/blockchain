@@ -6,6 +6,7 @@
 */
 #include "../includes/blockchain.h"
 #include <algorithm>
+#include <netdb.h>
 
 Blockchain::Blockchain() { this->chain = {this->create_genesis()}; }
 
@@ -46,7 +47,7 @@ void Blockchain::mine_pending_transactions(std::string reward_address, RSA* mine
 
     create_transaction({"Reward",
                         reward_address,
-                        reward}, miner_private_key);
+                        static_cast<float>(reward)}, miner_private_key);
 }
 
 void Blockchain::create_transaction(Transaction transaction, RSA* private_key)
@@ -75,12 +76,16 @@ void Blockchain::get_blocks_data() const
     std::for_each(chain.begin(), chain.end(), [](const Block& block) { block.get_data(); });
 }
 
-bool Blockchain::is_valid() const {
+bool Blockchain::is_valid() const
+{
     return std::adjacent_find(chain.begin() + 1, chain.end(),
-        [](const auto& current, const auto& previous) {
-            return current.m_prevhash == previous.m_hash;
-        }) == chain.end();
+        [](const auto& prev, const auto& curr)
+        {
+            return prev.m_hash != curr.m_prevhash;
+        })
+    == chain.end();
 }
+
 
 Block Blockchain::create_genesis()
 {

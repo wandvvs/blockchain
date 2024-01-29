@@ -36,8 +36,8 @@ int main()
     std::cout << "Miner balance: " << chain.get_balance("wand") << std::endl;
 
     chain.get_blocks_data();
-
-    std::cout << (chain.is_valid() ? "Chain are valid" : "Chain aren`t valid") << std::endl;
+    
+    std::cout << chain.is_valid() << std::endl;
 
     return 0;
 }

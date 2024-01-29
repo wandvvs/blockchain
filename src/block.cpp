@@ -64,7 +64,6 @@ void Block::deserialize(const nlohmann::json& json)
     m_prevhash = json.value("previous_hash", "");
     m_nonce = json.value("nonce", 0);
     m_timestamp = json.value("timestamp", 0);
-    
 }
 
 void Block::get_transactions() const

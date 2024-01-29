@@ -12,11 +12,9 @@ void MerkleTree::build_tree(const std::vector<std::string>& hashes)
     merkle_tree.clear();
     merkle_tree = hashes;
 
-    const size_t leaf_count = 2;
-
     while(merkle_tree.size() > 1)
     {
-        if (merkle_tree.size() % leaf_count != 0)
+        if (merkle_tree.size() % LEAF_COUNT != 0)
         {
             merkle_tree.push_back(merkle_tree.back());
         }

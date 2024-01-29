@@ -13,7 +13,7 @@
 #include <cstdint>
 #include <algorithm>
 
-constexpr uint32_t DIFFICULT = 3;
+constexpr uint8_t DIFFICULT = 3;
 
 class Blockchain
 {
@@ -21,10 +21,10 @@ private:
     std::vector<Block>       chain;
     std::vector<Transaction> pending_transactions;
     
-    float reward = 100.0f;
+    uint8_t reward = 100;
 
     Block create_genesis();
-
+    
 public:
     Blockchain();
 

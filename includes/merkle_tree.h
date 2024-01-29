@@ -10,6 +10,8 @@
 #include "../utils/crypto.h"
 #include <vector>
 
+constexpr uint8_t LEAF_COUNT = 2;
+
 class MerkleTree
 {
 private:

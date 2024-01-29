@@ -23,7 +23,7 @@ namespace crypto
     namespace rsa
     {
         #pragma clang diagnostic push
-        #pragma clang diagnostic ignored "-Wdeprecated-declarations" // xd
+        #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
         inline RSA* generate_private_key() {
             RSA* private_key = RSA_new();
