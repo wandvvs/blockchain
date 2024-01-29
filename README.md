@@ -11,9 +11,6 @@ Blockchain implementation with C++20 and STL, all test were performed on Arch Li
 - [ ] P2P
 - [ ] Consensus
 
-## Description
-
-
 ## **Dependencies:**
 ```bash
 sudo pacman -S openssl
